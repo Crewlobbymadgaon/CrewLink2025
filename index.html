@@ -28,37 +28,43 @@
       <a href="suratkal.html" class="bg-purple-600 text-white px-6 py-3 rounded shadow hover:bg-purple-700">Suratkal</a>
     </div>
   </main>
-  <script>
-  const crewRow = localStorage.getItem("myCrewRow");
-  const crewName = localStorage.getItem("myCrewName");
-  const today = new Date().getDay(); // Sunday = 0
-  const tomorrow = (today + 1) % 7;
-
-  if (crewRow && crewName) {
-    // Sample schedule – replace with Firebase or external JSON later
-    const linkData = {
-      "0": ["Train A", "Train B", "Train C", "Train D", "Rest", "", "Train G"], // Crew 1
-      "1": ["", "Train X", "Rest", "Train Y", "Train Z", "Train K", "Train M"], // Crew 2
-      // etc...
-    };
-
-    const todayDuty = linkData[crewRow]?.[today] || "Rest / Leave";
-    const tomorrowDuty = linkData[crewRow]?.[tomorrow] || "Rest / Leave";
-
-    const info = document.createElement("div");
-    info.className = "bg-yellow-100 border border-yellow-400 text-yellow-800 p-4 rounded mb-6 shadow";
-    info.innerHTML = 
-      <p class="font-semibold">👨‍✈️ ${crewName}'s Duty</p>
-      <p>📅 <strong>Today:</strong> ${todayDuty}</p>
-      <p>📅 <strong>Tomorrow:</strong> ${tomorrowDuty}</p>
-      <a href="ratnagiri_link1.html" class="inline-block mt-3 text-blue-700 underline hover:text-blue-900">Go to Duty Table</a>
-    ;
-    document.querySelector("main").prepend(info);
-  }
-</script>
+ 
 
   <footer class="text-center text-sm py-4 text-gray-500">
     Created by Sajeesh P
   </footer>
+  <script>
+  const row = localStorage.getItem("myCrewRow");
+  const col = localStorage.getItem("mySelectedDay");
+  const name = localStorage.getItem("myCrewName");
+
+  if (row !== null && col !== null && name) {
+    const today = new Date().getDay(); // 0 = Sunday
+    const offset = (parseInt(col) + (today - parseInt(col))) % 7;
+
+    // Simulated weekly duty rotation (same row but shift columns each day)
+    const nextCol = (parseInt(col) + 1) % 7;
+
+    const dutyTable = {
+      "0": ["Train 101", "Train 102", "Rest", "Train 104", "", "Train 106", "Train 107"],
+      "1": ["Train 201", "Rest", "Train 203", "Train 204", "Train 205", "", "Train 207"],
+      "2": ["", "Train 302", "Train 303", "Rest", "Train 305", "Train 306", "Train 307"],
+      // Add all 10 crew rows here
+    };
+
+    const todayDuty = dutyTable[row]?.[today] || "Rest/Leave";
+    const nextDuty = dutyTable[row]?.[nextCol] || "Rest/Leave";
+
+    const infoBox = document.createElement("div");
+    infoBox.className = "bg-yellow-100 border border-yellow-400 text-yellow-900 p-4 rounded mb-4 shadow text-left";
+    infoBox.innerHTML = 
+      <strong>👨‍✈️ ${name}'s Duty</strong><br>
+      📅 <strong>Today:</strong> ${todayDuty}<br>
+      📅 <strong>Next:</strong> ${nextDuty}<br>
+      <a href="ratnagiri_link1.html" class="text-blue-700 underline hover:text-blue-900 mt-2 inline-block">🔗 View Duty Table</a>
+    ;
+    document.querySelector("main").prepend(infoBox);
+  }
+</script>
 </body>
 </html>
