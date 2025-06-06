@@ -4,6 +4,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ratnagiri Link 1</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Standard favicon -->
+<link rel="icon" type="image/png" href="/favicon.png" />
+
+<!-- Apple Touch Icon (iOS) -->
+<link rel="apple-touch-icon" href="/favicon.png" />
+
+<!-- Web App Manifest (for Android and PWA support) -->
+<link rel="manifest" href="/manifest.json">
     <style>
   .highlighted {
     background-color: #fcd34d !important; /* yellow-300 */
@@ -211,32 +219,67 @@
           </tr>
         </tbody>
       </table>
-      <script>
+     <script>
   const table = document.querySelector("table");
-  const today = new Date().getDay(); // 0 = Sunday
   const rows = table.querySelectorAll("tbody tr");
+  const today = new Date().getDay(); // 0=Sunday
 
-  // Highlight previously selected duty
+  const dayCols = [1, 2, 3, 4, 5, 6, 7]; // Columns for Sunday to Saturday
+
   const savedRow = localStorage.getItem("myCrewRow");
-  const savedCol = localStorage.getItem("mySelectedDay");
-  if (savedRow !== null && savedCol !== null) {
-    const savedCell = table.rows[parseInt(savedRow) + 1].cells[parseInt(savedCol)];
-    savedCell.classList.add("highlighted");
+  const savedCrew = localStorage.getItem("myCrewName");
+
+  // Utility to get next duty text
+  function getNextDutyText(rowIndex) {
+    for (let offset = 1; offset < 7; offset++) {
+      let nextDay = (today + offset) % 7;
+      const cell = table.rows[parseInt(rowIndex) + 1].cells[nextDay + 1];
+      if (cell && !cell.classList.contains("bg-gray-100") && cell.textContent.trim() !== "—") {
+        return ${cell.innerText.trim()} on ${["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][nextDay]};
+      }
+    }
+    return "No upcoming duty found.";
   }
 
+  // Auto highlight today's duty if previously selected
+  if (savedRow !== null) {
+    const currentCell = table.rows[parseInt(savedRow) + 1].cells[today + 1];
+    if (currentCell && currentCell.textContent.trim() !== "—") {
+      currentCell.classList.add("highlighted");
+    }
+
+    // Show next duty message
+    const nextDuty = getNextDutyText(savedRow);
+    const banner = document.createElement("div");
+    banner.className = "bg-green-100 border border-green-400 text-green-800 px-4 py-2 rounded mb-4 text-center";
+    banner.innerHTML = 👨‍✈️ <strong>${savedCrew}</strong> – Your next duty is <strong>${nextDuty}</strong>;
+    document.querySelector("main").insertBefore(banner, document.querySelector("table"));
+  }
+
+  // Cell click event
   rows.forEach((row, rowIndex) => {
     const cells = row.querySelectorAll("td");
+
     cells.forEach((cell, colIndex) => {
-      if (colIndex === 0 || cell.classList.contains('rest-cell') ||  cell.classList.contains('empty-cell')) return;
+      if (colIndex === 0 || cell.textContent.trim() === "—") return;
 
       cell.addEventListener("click", () => {
-        document.querySelectorAll(".highlighted").forEach(c => c.classList.remove("highlighted"));
-        cell.classList.add("highlighted");
+        const alreadySelected = cell.classList.contains("highlighted");
 
-        // Save crew row, name, and selected column (duty)
-        localStorage.setItem("myCrewRow", rowIndex);
-        localStorage.setItem("myCrewName", row.cells[0].textContent);
-        localStorage.setItem("mySelectedDay", colIndex);
+        // Clear all highlights
+        document.querySelectorAll(".highlighted").forEach(c => c.classList.remove("highlighted"));
+
+        if (alreadySelected) {
+          localStorage.removeItem("myCrewRow");
+          localStorage.removeItem("myCrewName");
+          localStorage.removeItem("mySelectedDay");
+        } else {
+          cell.classList.add("highlighted");
+          localStorage.setItem("myCrewRow", rowIndex);
+          localStorage.setItem("myCrewName", row.cells[0].textContent);
+          localStorage.setItem("mySelectedDay", colIndex);
+          location.reload(); // Refresh to show next duty banner
+        }
       });
     });
   });
