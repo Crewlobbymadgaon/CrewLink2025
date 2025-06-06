@@ -227,7 +227,7 @@
   rows.forEach((row, rowIndex) => {
     const cells = row.querySelectorAll("td");
     cells.forEach((cell, colIndex) => {
-      if (colIndex === 0  cell.classList.contains('rest-cell')  cell.classList.contains('empty-cell')) return;
+      if (colIndex === 0 || cell.classList.contains('rest-cell') ||  cell.classList.contains('empty-cell')) return;
 
       cell.addEventListener("click", () => {
         document.querySelectorAll(".highlighted").forEach(c => c.classList.remove("highlighted"));
