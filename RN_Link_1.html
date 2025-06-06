@@ -213,16 +213,18 @@
           </tr>
         </tbody>
       </table>
-    </div>
-    <div class="text-center mt-6">
-  <a href="RN_Link_Menu.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition">
-    Back
-  </a>
-</div>
-  </main>  
-<script>
+      <script>
   const table = document.querySelector("table");
+  const today = new Date().getDay(); // 0 = Sunday
   const rows = table.querySelectorAll("tbody tr");
+
+  // Highlight previously selected duty
+  const savedRow = localStorage.getItem("myCrewRow");
+  const savedCol = localStorage.getItem("mySelectedDay");
+  if (savedRow !== null && savedCol !== null) {
+    const savedCell = table.rows[parseInt(savedRow) + 1].cells[parseInt(savedCol)];
+    savedCell.classList.add("highlighted");
+  }
 
   rows.forEach((row, rowIndex) => {
     const cells = row.querySelectorAll("td");
@@ -233,7 +235,7 @@
         document.querySelectorAll(".highlighted").forEach(c => c.classList.remove("highlighted"));
         cell.classList.add("highlighted");
 
-        // Save crew and selected day
+        // Save crew row, name, and selected column (duty)
         localStorage.setItem("myCrewRow", rowIndex);
         localStorage.setItem("myCrewName", row.cells[0].textContent);
         localStorage.setItem("mySelectedDay", colIndex);
@@ -241,6 +243,14 @@
     });
   });
 </script>
+    </div>
+    <div class="text-center mt-6">
+  <a href="RN_Link_Menu.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition">
+    Back
+  </a>
+</div>
+  </main>  
+
   <footer class="text-center text-sm text-gray-500 py-4">
     ©2025 Combined Crew Lobby Madgaon
   </footer>
