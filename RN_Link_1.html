@@ -217,7 +217,7 @@
           </tr>
         </tbody>
       </table>
- <script>
+<script>
   const crewName = localStorage.getItem("crewName") || prompt("Enter your name");
   localStorage.setItem("crewName", crewName);
 
@@ -225,8 +225,8 @@
   const nextDutyDiv = document.getElementById("next-duty");
   let nextDutyShown = false;
 
-  const today = new Date().toISOString().slice(0, 10); // e.g. 2025-06-05
-  const storageKey = selectedDuty-${crewName}-${today};
+  const today = new Date().toISOString().slice(0, 10); // e.g., 2025-06-06
+  const storageKey = `selectedDuty-${crewName}-${today}`;
 
   // Function to show "Next Duty"
   function showNextDuty(cells, colIndex) {
@@ -234,12 +234,12 @@
     let next = "No upcoming duty";
     for (let i = colIndex + 1; i < cells.length; i++) {
       const text = cells[i].textContent.trim().toLowerCase();
-      if (text && text !== "rest") {
+      if (text && text !== "rest" && text !== "—") {
         next = cells[i].textContent.trim();
         break;
       }
     }
-    nextDutyDiv.textContent = Next Duty: ${next};
+    nextDutyDiv.textContent = `Next Duty: ${next}`;
     nextDutyShown = true;
   }
 
@@ -262,29 +262,30 @@
 
   table.addEventListener("click", (e) => {
     const cell = e.target.closest("td");
-    if (!cell) return;
+    if (!cell || cell.cellIndex === 0 || cell.textContent.trim() === "") return;
 
     const row = cell.parentElement;
     const rowIndex = row.rowIndex;
     const colIndex = cell.cellIndex;
     const cells = row.querySelectorAll("td");
 
-    if (colIndex === 0 || cell.textContent.trim() === "") return;
-
-    // Remove all highlights from the row
+    // Remove existing highlights from the row
     cells.forEach(td => td.classList.remove("bg-yellow-300"));
 
-    // Add highlight to selected cell
+    // Add highlight to the clicked cell
     cell.classList.add("bg-yellow-300");
 
-    // Save selected cell to localStorage
+    // Save selection
     localStorage.setItem(storageKey, JSON.stringify({ row: rowIndex, col: colIndex }));
 
+    // Reset and show next duty
+    nextDutyShown = false;
     showNextDuty(cells, colIndex);
   });
 
-  autoHighlight(); // Run on load
+  autoHighlight(); // Run on page load
 </script>
+
     </div>
     <div class="text-center mt-6">
   <a href="RN_Link_Menu.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition">
