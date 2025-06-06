@@ -218,73 +218,64 @@
         </tbody>
       </table>
 <script>
-  const crewName = localStorage.getItem("crewName") || prompt("Enter your name");
-  localStorage.setItem("crewName", crewName);
+  const storageKey = 'highlightedCell';
 
-  const table = document.querySelector("table");
-  const nextDutyDiv = document.getElementById("next-duty");
-  let nextDutyShown = false;
-
-  const today = new Date().toISOString().slice(0, 10); // e.g., 2025-06-06
-  const storageKey = `selectedDuty-${crewName}-${today}`;
-
-  // Function to show "Next Duty"
-  function showNextDuty(cells, colIndex) {
-    if (nextDutyShown) return;
-    let next = "No upcoming duty";
-    for (let i = colIndex + 1; i < cells.length; i++) {
-      const text = cells[i].textContent.trim().toLowerCase();
-      if (text && text !== "rest" && text !== "—") {
-        next = cells[i].textContent.trim();
-        break;
-      }
-    }
-    nextDutyDiv.textContent = `Next Duty: ${next}`;
-    nextDutyShown = true;
+  // Customize this function to return the "next duty" for the current day (0=Sun, 1=Mon, ..., 6=Sat)
+  function getNextDutyForToday() {
+    const today = new Date().getDay(); // Sunday=0, Monday=1, ...
+    // Map day of week to duty number (example)
+    // Adjust this array according to your duty schedule
+    const dutySchedule = {
+      0: 1, // Sunday => Duty 1
+      1: 2, // Monday => Duty 2
+      2: 3,
+      3: 4,
+      4: 5,
+      5: 6,
+      6: 7 // Saturday => Duty 7
+    };
+    return dutySchedule[today] || 1; // Default to 1 if not found
   }
 
-  // Auto highlight previously selected cell
-  function autoHighlight() {
-    const saved = JSON.parse(localStorage.getItem(storageKey));
-    if (saved) {
-      const rowIndex = saved.row;
-      const colIndex = saved.col;
-      const row = table.rows[rowIndex];
-      if (row) {
-        const cell = row.cells[colIndex];
-        if (cell) {
-          cell.classList.add("bg-yellow-300");
-          showNextDuty(row.cells, colIndex);
-        }
-      }
+  // Customize your default crew if needed
+  const defaultCrew = 'A';
+
+  function highlightDuty(crew, duty) {
+    const clickedCell = `${crew}-${duty}`;
+    const previouslySelected = localStorage.getItem(storageKey);
+
+    if (previouslySelected === clickedCell) {
+      // Same cell clicked again – clear highlight
+      localStorage.removeItem(storageKey);
+    } else {
+      // Different cell clicked – set new highlight
+      localStorage.setItem(storageKey, clickedCell);
     }
+
+    // Reload to apply changes
+    location.reload();
   }
 
-  table.addEventListener("click", (e) => {
-    const cell = e.target.closest("td");
-    if (!cell || cell.cellIndex === 0 || cell.textContent.trim() === "") return;
+  document.addEventListener("DOMContentLoaded", function () {
+    let storedCell = localStorage.getItem(storageKey);
 
-    const row = cell.parentElement;
-    const rowIndex = row.rowIndex;
-    const colIndex = cell.cellIndex;
-    const cells = row.querySelectorAll("td");
+    if (!storedCell) {
+      // If no stored highlight, auto highlight next duty for today with default crew
+      const duty = getNextDutyForToday();
+      storedCell = `${defaultCrew}-${duty}`;
+      localStorage.setItem(storageKey, storedCell);
+    }
 
-    // Remove existing highlights from the row
-    cells.forEach(td => td.classList.remove("bg-yellow-300"));
-
-    // Add highlight to the clicked cell
-    cell.classList.add("bg-yellow-300");
-
-    // Save selection
-    localStorage.setItem(storageKey, JSON.stringify({ row: rowIndex, col: colIndex }));
-
-    // Reset and show next duty
-    nextDutyShown = false;
-    showNextDuty(cells, colIndex);
+    if (storedCell) {
+      const [crew, duty] = storedCell.split("-");
+      const cell = document.getElementById(`cell-${crew}-${duty}`);
+      if (cell) {
+        cell.classList.add("bg-yellow-300");
+      }
+    }
   });
-
-  autoHighlight(); // Run on page load
 </script>
+
 
     </div>
     <div class="text-center mt-6">
