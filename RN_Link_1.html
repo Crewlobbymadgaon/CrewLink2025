@@ -4,20 +4,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ratnagiri Link 1</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .highlighted {
-      background-color: #34d399 !important; /* green-400 */
-      color: white;
-      font-weight: bold;
-    }
+    <style>
+  .highlighted {
+    background-color: #38bdf8;
+    color: white;
+    font-weight: bold;
+  }
 </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
   <header class="bg-blue-900 text-white text-center py-5">
-    <h1 class="text-2xl font-bold">Ratnagiri Crew Link - 1 (10 Men)</h1>
+    <h1 class="text-2xl font-bold">Ratnagiri Crew Link - 1</h1>
     <h1 class="text-2xl font-semibold">(10 Men)</h1>
     <p class="text-sm">Monsoon - 2025</p>
   </header>  <main class="max-w-5xl mx-auto px-4 py-8">
+    <div class="bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-2 rounded mb-4 text-center">
+  <strong>Instruction:</strong> Click on your duty cell once to select your Duty. Your duty will be automatically highlighted each day. Click again to <strong>stop when on leave or Duty changes</strong>.
+</div>
     <div class="overflow-x-auto">
       <table class="table-auto w-full border border-gray-300 text-center text-sm">
         <thead class="bg-blue-200">
@@ -213,10 +216,32 @@
     </div>
     <div class="text-center mt-6">
   <a href="RN_Link_Menu.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition">
-    ← Back
+    Back
   </a>
 </div>
-  </main>  <footer class="text-center text-sm text-gray-500 py-4">
+  </main>  
+<script>
+  const table = document.querySelector("table");
+  const rows = table.querySelectorAll("tbody tr");
+
+  rows.forEach((row, rowIndex) => {
+    const cells = row.querySelectorAll("td");
+    cells.forEach((cell, colIndex) => {
+      if (colIndex === 0  cell.classList.contains('rest-cell')  cell.classList.contains('empty-cell')) return;
+
+      cell.addEventListener("click", () => {
+        document.querySelectorAll(".highlighted").forEach(c => c.classList.remove("highlighted"));
+        cell.classList.add("highlighted");
+
+        // Save crew and selected day
+        localStorage.setItem("myCrewRow", rowIndex);
+        localStorage.setItem("myCrewName", row.cells[0].textContent);
+        localStorage.setItem("mySelectedDay", colIndex);
+      });
+    });
+  });
+</script>
+  <footer class="text-center text-sm text-gray-500 py-4">
     ©2025 Combined Crew Lobby Madgaon
   </footer>
 </body>
