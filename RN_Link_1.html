@@ -220,24 +220,22 @@
 <script>
   const storageKey = 'highlightedCell';
 
-  // Customize this function to return the "next duty" for the current day (0=Sun, 1=Mon, ..., 6=Sat)
+  // Map day of week to duty number (customize as needed)
   function getNextDutyForToday() {
     const today = new Date().getDay(); // Sunday=0, Monday=1, ...
-    // Map day of week to duty number (example)
-    // Adjust this array according to your duty schedule
     const dutySchedule = {
-      0: 1, // Sunday => Duty 1
-      1: 2, // Monday => Duty 2
+      0: 1,
+      1: 2,
       2: 3,
       3: 4,
       4: 5,
       5: 6,
-      6: 7 // Saturday => Duty 7
+      6: 7
     };
-    return dutySchedule[today] || 1; // Default to 1 if not found
+    return dutySchedule[today] || 1;
   }
 
-  // Customize your default crew if needed
+  // Default crew for auto highlight (customize)
   const defaultCrew = 'A';
 
   function highlightDuty(crew, duty) {
@@ -245,22 +243,36 @@
     const previouslySelected = localStorage.getItem(storageKey);
 
     if (previouslySelected === clickedCell) {
-      // Same cell clicked again – clear highlight
+      // If clicking already selected cell, remove highlight
       localStorage.removeItem(storageKey);
+      removeHighlightFromAll();
     } else {
-      // Different cell clicked – set new highlight
+      // Highlight new cell and save it
       localStorage.setItem(storageKey, clickedCell);
+      removeHighlightFromAll();
+      addHighlight(crew, duty);
     }
+  }
 
-    // Reload to apply changes
-    location.reload();
+  function removeHighlightFromAll() {
+    // Remove highlight from all duty cells
+    document.querySelectorAll('td[id^="cell-"]').forEach(cell => {
+      cell.classList.remove("bg-yellow-300");
+    });
+  }
+
+  function addHighlight(crew, duty) {
+    const cell = document.getElementById(`cell-${crew}-${duty}`);
+    if (cell) {
+      cell.classList.add("bg-yellow-300");
+    }
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     let storedCell = localStorage.getItem(storageKey);
 
     if (!storedCell) {
-      // If no stored highlight, auto highlight next duty for today with default crew
+      // If no stored highlight, auto highlight next duty for today
       const duty = getNextDutyForToday();
       storedCell = `${defaultCrew}-${duty}`;
       localStorage.setItem(storageKey, storedCell);
@@ -268,10 +280,7 @@
 
     if (storedCell) {
       const [crew, duty] = storedCell.split("-");
-      const cell = document.getElementById(`cell-${crew}-${duty}`);
-      if (cell) {
-        cell.classList.add("bg-yellow-300");
-      }
+      addHighlight(crew, duty);
     }
   });
 </script>
