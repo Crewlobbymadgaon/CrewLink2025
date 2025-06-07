@@ -1,304 +1,331 @@
-<!DOCTYPE html><html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ratnagiri Link 1</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Standard favicon -->
-<link rel="icon" type="image/png" href="/favicon.png" />
+<!DOCTYPE html><html lang="en">  <head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <title>Ratnagiri Link 1</title>  
+  <script src="https://cdn.tailwindcss.com"></script>  
+  <style>
+  .duty-cell {
+    background-color: #facc15 !important; /* Yellow */
+    font-weight: bold;
+    border: 2px solid #f59e0b;
+  }
 
-<!-- Apple Touch Icon (iOS) -->
-<link rel="apple-touch-icon" href="/favicon.png" />
+  .active-row {
+    background-color: #e0f2fe !important; /* Light blue for all row cells */
+  }
 
-<!-- Web App Manifest (for Android and PWA support) -->
-<link rel="manifest" href="/manifest.json">
-    <style>
-  .highlighted {
-    background-color: #fcd34d !important; /* yellow-300 */
+  .crew-cell-highlight {
+    background-color: #e0f2fe !important; /* Same blue as row */
   }
 </style>
-</head>
+   
+</style>
+</head>  
 <body class="bg-gray-50 text-gray-800">
-  <header class="bg-blue-900 text-white text-center py-5">
+  <header class="bg-blue-900 text-white text-center py-5 sticky top-0 z-50">
     <h1 class="text-2xl font-bold">Ratnagiri Crew Link - 1</h1>
-    <h1 class="text-2xl font-semibold">(10 Men)</h1>
+    <h1 class="text-2xl font-semibold">(08 Men)</h1>
     <p class="text-sm">Monsoon - 2025</p>
-  </header>  <main class="max-w-5xl mx-auto px-4 py-8">
-   <div id="next-duty" class="text-xl font-semibold text-blue-800 my-4"></div>
-    <div class="overflow-x-auto">
-      <table class="table-auto w-full border border-gray-300 text-center text-sm">
-        <thead class="bg-blue-200">
-          <tr>
-            <th class="border px-3 py-2">Crew</th>
-            <th class="border px-3 py-2">Sunday</th>
-            <th class="border px-3 py-2">Monday</th>
-            <th class="border px-3 py-2">Tuesday</th>
-            <th class="border px-3 py-2">Wednesday</th>
-            <th class="border px-3 py-2">Thursday</th>
-            <th class="border px-3 py-2">Friday</th>
-            <th class="border px-3 py-2">Saturday</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Row 1 -->
-          <tr class="bg-white">
-            <td class="border px-3 py-2 font-semibold">Crew 1</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12051</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12052</div>
-            </td>
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12201</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12202</div>
-            </td>
-            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12411</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12412</div>
-            </td>
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12621</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12622</div>
-            </td>
-          </tr>
-          <!-- Row 2 -->
-          <tr class="bg-blue-50">
-            <td class="border px-3 py-2 font-semibold">Crew 2</td>
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12801</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12802</div>
-            </td>
-            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12111</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12112</div>
-            </td>
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12611</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12612</div>
-            </td>
-            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>
-          </tr>
-           <tr class="bg-white">
-            <td class="border px-3 py-2 font-semibold">Crew 3</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12051</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12052</div>
-            </td>
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12201</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12202</div>
-            </td>
-            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12411</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12412</div>
-            </td>
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12621</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12622</div>
-            </td>
-          </tr>
-           <tr class="bg-blue-50">
-            <td class="border px-3 py-2 font-semibold">Crew 4</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12051</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12052</div>
-            </td>
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12201</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12202</div>
-            </td>
-            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12411</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12412</div>
-            </td>
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12621</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12622</div>
-            </td>
-          </tr>
-           <tr class="bg-white">
-            <td class="border px-3 py-2 font-semibold">Crew 5</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12051</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12052</div>
-            </td>
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12201</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12202</div>
-            </td>
-            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12411</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12412</div>
-            </td>
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12621</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12622</div>
-            </td>
-          </tr>
-           <tr class="bg-blue-50">
-            <td class="border px-3 py-2 font-semibold">Crew 6</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12051</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12052</div>
-            </td>
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12201</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12202</div>
-            </td>
-            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12411</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12412</div>
-            </td>
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12621</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12622</div>
-            </td>
-          </tr>
-           <tr class="bg-white">
-            <td class="border px-3 py-2 font-semibold">Crew 7</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12051</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12052</div>
-            </td>
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12201</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12202</div>
-            </td>
-            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12411</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12412</div>
-            </td>
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12621</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12622</div>
-            </td>
-          </tr>
-           <tr class="bg-blue-50">
-            <td class="border px-3 py-2 font-semibold">Crew 8</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12051</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12052</div>
-            </td>
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12201</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12202</div>
-            </td>
-            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12411</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12412</div>
-            </td>
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>
-            <td class="border px-3 py-2">
-              <div class="text-blue-700 font-bold">12621</div>
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12622</div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  </header>
+  <!-- rest of page -->
+</body>  <main class="max-w-5xl mx-auto px-4 py-8">  
+   <div class="overflow-auto max-w-full h-[400px] border">
+ <table class="table-auto border-collapse w-full min-w-max text-center">
+    <thead class="bg-blue-200">
+      <tr>
+        <th class="border px-3 py-2 sticky top-0 left-0 z-20 bg-blue-200">Crew</th>
+        <th class="border px-3 py-2 sticky top-0 z-10 bg-blue-200">Sunday</th>
+        <th class="border px-3 py-2 sticky top-0 z-10 bg-blue-200">Monday</th>
+        <th class="border px-3 py-2 sticky top-0 z-10 bg-blue-200">Tuesday</th>
+        <th class="border px-3 py-2 sticky top-0 z-10 bg-blue-200">Wednesday</th>
+        <th class="border px-3 py-2 sticky top-0 z-10 bg-blue-200">Thursday</th>
+        <th class="border px-3 py-2 sticky top-0 z-10 bg-blue-200">Friday</th>
+        <th class="border px-3 py-2 sticky top-0 z-10 bg-blue-200">Saturday</th>
+      </tr>
+    </thead>
+
+        <tbody>  
+          <!-- Row 1 -->  
+          <tr class="bg-white">  
+          <td class="border px-3 py-2 font-semibold sticky left-0 z-10 bg-white">Crew 1</td>
+<!-- And similarly for Crew 2, Crew 3, etc. -->
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12051</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12052</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12201</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12202</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12411</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12412</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12621</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12622</div>  
+            </td>  
+          </tr>  
+          <!-- Row 2 -->  
+          <tr class="bg-blue-50">  
+ <td class="border px-3 py-2 font-semibold sticky left-0 z-10 bg-white">Crew 2</td> 
+            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12801</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12802</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12111</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12112</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12611</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12612</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>  
+          </tr>  
+           <tr class="bg-white">  
+ <td class="border px-3 py-2 font-semibold sticky left-0 z-10 bg-white">Crew 3</td> 
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12051</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12052</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12201</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12202</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12411</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12412</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12621</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12622</div>  
+            </td>  
+          </tr>  
+           <tr class="bg-blue-50">  
+   <td class="border px-3 py-2 font-semibold sticky left-0 z-10 bg-white">Crew 4</td> 
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12051</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12052</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12201</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12202</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12411</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12412</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12621</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12622</div>  
+            </td>  
+          </tr>  
+           <tr class="bg-white">  
+   <td class="border px-3 py-2 font-semibold sticky left-0 z-10 bg-white">Crew 5</td> 
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12051</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12052</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12201</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12202</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12411</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12412</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12621</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12622</div>  
+            </td>  
+          </tr>  
+           <tr class="bg-blue-50">  
+ <td class="border px-3 py-2 font-semibold sticky left-0 z-10 bg-white">Crew 6</td> 
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12051</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12052</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12201</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12202</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12411</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12412</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12621</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12622</div>  
+            </td>  
+          </tr>  
+           <tr class="bg-white">  
+     <td class="border px-3 py-2 font-semibold sticky left-0 z-10 bg-white">Crew 7</td> 
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12051</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12052</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12201</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12202</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12411</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12412</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12621</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12622</div>  
+            </td>  
+          </tr>  
+           <tr class="bg-blue-50">  
+     <td class="border px-3 py-2 font-semibold sticky left-0 z-10 bg-white">Crew 8</td> 
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12051</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12052</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12201</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12202</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12411</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12412</div>  
+            </td>  
+            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
+            <td class="border px-3 py-2">  
+              <div class="text-blue-700 font-bold">12621</div>  
+              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12622</div>  
+            </td>  
+          </tr>  
+        </tbody>  
+      </table>  
+ 
+
+
 <script>
-  const storageKey = 'highlightedCell';
+  document.addEventListener("DOMContentLoaded", () => {
+    const table = document.querySelector("table");
+    const rows = table.querySelectorAll("tbody tr");
+    const totalDays = 7; // Sunday to Saturday
 
-  // Map day of week to duty number (customize as needed)
-  function getNextDutyForToday() {
-    const today = new Date().getDay(); // Sunday=0, Monday=1, ...
-    const dutySchedule = {
-      0: 1,
-      1: 2,
-      2: 3,
-      3: 4,
-      4: 5,
-      5: 6,
-      6: 7
-    };
-    return dutySchedule[today] || 1;
-  }
+    let savedRow = parseInt(localStorage.getItem("dutyRow"));
+    let savedCol = parseInt(localStorage.getItem("dutyCol"));
+    let lastDutyDate = localStorage.getItem("lastDutyDate");
 
-  // Default crew for auto highlight (customize)
-  const defaultCrew = 'A';
+    const today = new Date();
+    const todayDay = today.getDay(); // 0 = Sunday
 
-  function highlightDuty(crew, duty) {
-    const clickedCell = `${crew}-${duty}`;
-    const previouslySelected = localStorage.getItem(storageKey);
+    // Clear previous highlights
+  function clearHighlights() {
+  table.querySelectorAll("td").forEach(cell => {
+    cell.classList.remove("duty-cell", "crew-cell-highlight");
+  });
+  table.querySelectorAll("tr").forEach(row => {
+    row.classList.remove("active-row");
+  });
+}
 
-    if (previouslySelected === clickedCell) {
-      // If clicking already selected cell, remove highlight
-      localStorage.removeItem(storageKey);
-      removeHighlightFromAll();
-    } else {
-      // Highlight new cell and save it
-      localStorage.setItem(storageKey, clickedCell);
-      removeHighlightFromAll();
-      addHighlight(crew, duty);
+    // Highlight selected duty and row
+    function highlight(rowIdx, colIdx) {
+  clearHighlights();
+
+  const row = rows[rowIdx];
+  const cell = row.cells[colIdx];
+  const crewCell = row.cells[0];
+  const text = cell?.textContent.trim();
+
+  if (!cell || text === "" || text === "Rest" || text === "—") return;
+
+  cell.classList.add("duty-cell");           // Yellow duty cell
+  crewCell.classList.add("crew-cell-highlight"); // Blue crew number cell
+  row.classList.add("active-row");           // Blue entire row
+
+  localStorage.setItem("dutyRow", rowIdx);
+  localStorage.setItem("dutyCol", colIdx);
+  localStorage.setItem("lastDutyDate", today.toDateString());
+}
+
+    // Advance to next day automatically
+    function autoAdvance() {
+      if (isNaN(savedRow) || isNaN(savedCol)) return;
+
+      if (lastDutyDate && today.toDateString() !== lastDutyDate) {
+        let nextCol = (savedCol + 1) % totalDays;
+        let nextRow = savedRow;
+
+        if (nextCol === 0) {
+          nextRow = (savedRow + 1) % rows.length;
+        }
+
+        savedRow = nextRow;
+        savedCol = nextCol;
+        highlight(savedRow, savedCol);
+      } else {
+        highlight(savedRow, savedCol);
+      }
     }
-  }
 
-  function removeHighlightFromAll() {
-    // Remove highlight from all duty cells
-    document.querySelectorAll('td[id^="cell-"]').forEach(cell => {
-      cell.classList.remove("bg-yellow-300");
+    // Handle clicks
+    rows.forEach((row, rowIdx) => {
+      row.querySelectorAll("td").forEach((cell, colIdx) => {
+        if (colIdx === 0) return;
+
+        cell.addEventListener("click", () => {
+          const text = cell.textContent.trim();
+          if (text === "" || text === "Rest" || text === "—") return;
+
+          if (savedRow === rowIdx && savedCol === colIdx) {
+            clearHighlights();
+            localStorage.removeItem("dutyRow");
+            localStorage.removeItem("dutyCol");
+            localStorage.removeItem("lastDutyDate");
+            savedRow = savedCol = undefined;
+          } else {
+            savedRow = rowIdx;
+            savedCol = colIdx;
+            highlight(rowIdx, colIdx);
+          }
+        });
+      });
     });
-  }
 
-  function addHighlight(crew, duty) {
-    const cell = document.getElementById(`cell-${crew}-${duty}`);
-    if (cell) {
-      cell.classList.add("bg-yellow-300");
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    let storedCell = localStorage.getItem(storageKey);
-
-    if (!storedCell) {
-      // If no stored highlight, auto highlight next duty for today
-      const duty = getNextDutyForToday();
-      storedCell = `${defaultCrew}-${duty}`;
-      localStorage.setItem(storageKey, storedCell);
-    }
-
-    if (storedCell) {
-      const [crew, duty] = storedCell.split("-");
-      addHighlight(crew, duty);
-    }
+    // Run on page load
+    autoAdvance();
   });
 </script>
-
-
-    </div>
-    <div class="text-center mt-6">
-  <a href="RN_Link_Menu.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition">
-    Back
-  </a>
 </div>
-    <div class="bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-2 rounded mb-4 text-center">
-  <strong>Instruction:</strong> Click on your duty cell once to select your Duty. Your duty will be automatically highlighted each day. Click again to <strong>stop when on leave or Duty changes</strong>.
-</div>
-  </main>  
+<div class="text-center mt-6">
+<a href="RN_Link_Menu.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition">
+Back
+</a>
 
-  <footer class="text-center text-sm text-gray-500 py-4">
-    ©2025 Combined Crew Lobby Madgaon
-  </footer>
-</body>
+</div>  
+  </main>      <footer class="text-center text-sm text-gray-500 py-4">  
+    ©2025 Combined Crew Lobby Madgaon  
+  </footer>  
+</body>  
 </html>
