@@ -24,12 +24,12 @@
 <body class="bg-gray-50 text-gray-800">
   <header class="bg-blue-900 text-white text-center py-5 sticky top-0 z-50">
     <h1 class="text-2xl font-bold">Ratnagiri Crew Link - 1</h1>
-    <h1 class="text-2xl font-semibold">(08 Men)</h1>
+    <h1 class="text-2xl font-semibold">(15 Men)</h1>
     <p class="text-sm">Monsoon - 2025</p>
   </header>
   <!-- rest of page -->
 </body>  <main class="max-w-5xl mx-auto px-4 py-8">  
-   <div class="overflow-auto max-w-full h-[400px] border">
+   <div class="overflow-auto max-w-full h-[500px] border">
  <table class="table-auto border-collapse w-full min-w-max text-center">
     <thead class="bg-blue-200">
       <tr>
@@ -49,15 +49,34 @@
           <tr class="bg-white">  
           <td class="border px-3 py-2 font-semibold sticky left-0 z-10 bg-white">Crew 1</td>
 <!-- And similarly for Crew 2, Crew 3, etc. -->
-            <td class="border px-3 py-2">  
-              <div class="text-blue-700 font-bold">12051</div>  
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12052</div>  
-            </td>  
-            <td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
-            <td class="border px-3 py-2">  
-              <div class="text-blue-700 font-bold">12201</div>  
-              <div class="text-green-700 font-bold border-t border-gray-300 mt-1">12202</div>  
-            </td>  
+<td class="relative border px-3 py-4 text-center align-top">
+  <!-- Direction Arrow -->
+  <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid red;"></div>
+
+  <!-- Top Train Number -->
+  <div class="text-blue-800 font-bold text-base mb-[2px]">
+    16312
+  </div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-green-700 font-bold text-base pt-[2px] border-t border-gray-300">
+    11100
+  </div>
+</td>
+        <td class="relative border px-3 py-4 text-center align-top">
+  <!-- Direction Arrow -->
+  <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid red;"></div>
+
+  <!-- Top Train Number -->
+  <div class="text-blue-800 font-bold text-base mb-1">
+    16312
+  </div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">
+    11100
+  </div>
+</td>
             <td class="border px-3 py-2 bg-gray-100 text-gray-400 italic">—</td>  
             <td class="border px-3 py-2">  
               <div class="text-blue-700 font-bold">12411</div>  
@@ -224,99 +243,7 @@
         </tbody>  
       </table>  
  
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const table = document.querySelector("table");
-    const rows = table.querySelectorAll("tbody tr");
-    const totalDays = 7; // Sunday to Saturday
-
-    let savedRow = parseInt(localStorage.getItem("dutyRow"));
-    let savedCol = parseInt(localStorage.getItem("dutyCol"));
-    let lastDutyDate = localStorage.getItem("lastDutyDate");
-
-    const today = new Date();
-    const todayDay = today.getDay(); // 0 = Sunday
-
-    // Clear previous highlights
-  function clearHighlights() {
-  table.querySelectorAll("td").forEach(cell => {
-    cell.classList.remove("duty-cell", "crew-cell-highlight");
-  });
-  table.querySelectorAll("tr").forEach(row => {
-    row.classList.remove("active-row");
-  });
-}
-
-    // Highlight selected duty and row
-    function highlight(rowIdx, colIdx) {
-  clearHighlights();
-
-  const row = rows[rowIdx];
-  const cell = row.cells[colIdx];
-  const crewCell = row.cells[0];
-  const text = cell?.textContent.trim();
-
-  if (!cell || text === "" || text === "Rest" || text === "—") return;
-
-  cell.classList.add("duty-cell");           // Yellow duty cell
-  crewCell.classList.add("crew-cell-highlight"); // Blue crew number cell
-  row.classList.add("active-row");           // Blue entire row
-
-  localStorage.setItem("dutyRow", rowIdx);
-  localStorage.setItem("dutyCol", colIdx);
-  localStorage.setItem("lastDutyDate", today.toDateString());
-}
-
-    // Advance to next day automatically
-    function autoAdvance() {
-      if (isNaN(savedRow) || isNaN(savedCol)) return;
-
-      if (lastDutyDate && today.toDateString() !== lastDutyDate) {
-        let nextCol = (savedCol + 1) % totalDays;
-        let nextRow = savedRow;
-
-        if (nextCol === 0) {
-          nextRow = (savedRow + 1) % rows.length;
-        }
-
-        savedRow = nextRow;
-        savedCol = nextCol;
-        highlight(savedRow, savedCol);
-      } else {
-        highlight(savedRow, savedCol);
-      }
-    }
-
-    // Handle clicks
-    rows.forEach((row, rowIdx) => {
-      row.querySelectorAll("td").forEach((cell, colIdx) => {
-        if (colIdx === 0) return;
-
-        cell.addEventListener("click", () => {
-          const text = cell.textContent.trim();
-          if (text === "" || text === "Rest" || text === "—") return;
-
-          if (savedRow === rowIdx && savedCol === colIdx) {
-            clearHighlights();
-            localStorage.removeItem("dutyRow");
-            localStorage.removeItem("dutyCol");
-            localStorage.removeItem("lastDutyDate");
-            savedRow = savedCol = undefined;
-          } else {
-            savedRow = rowIdx;
-            savedCol = colIdx;
-            highlight(rowIdx, colIdx);
-          }
-        });
-      });
-    });
-
-    // Run on page load
-    autoAdvance();
-  });
-</script>
+<script src="highlight.js"></script>
 </div>
 <div class="text-center mt-6">
 <a href="RN_Link_Menu.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition">
