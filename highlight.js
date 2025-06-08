@@ -1,5 +1,4 @@
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const table = document.querySelector("table");
     const rows = table.querySelectorAll("tbody tr");
     const totalDays = 7; // Sunday to Saturday
@@ -88,4 +87,4 @@
     // Run on page load
     autoAdvance();
   });
-</script>
+
