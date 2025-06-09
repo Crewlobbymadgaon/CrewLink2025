@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const table = document.querySelector("table");
   const rows = table.querySelectorAll("tbody tr");
   const totalDays = 7; // Sunday to Saturday
-  const linkId = table.dataset.linkId; // Unique ID for this crew link
+  const linkId = document.body.dataset.linkId;
 
   let savedRow = parseInt(localStorage.getItem("dutyRow"));
   let savedCol = parseInt(localStorage.getItem("dutyCol"));
