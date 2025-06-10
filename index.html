@@ -20,8 +20,15 @@
       transition: all 0.1s ease-in;
     }
   </style>
+  <script>
+  function adjustViewportHeight() {
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+  }
+  window.addEventListener('resize', adjustViewportHeight);
+  window.addEventListener('load', adjustViewportHeight);
+  </script>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-50 text-gray-800">
+<body class="flex flex-col bg-gray-50 text-gray-800" style="min-height: calc(var(--vh, 1vh) * 100);">
 
   <header class="bg-blue-900 text-white text-center py-6 shadow-md">
     <h1 class="text-3xl font-bold">CREW LINK 2025</h1>
