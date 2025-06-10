@@ -12,14 +12,14 @@
       font-style: italic;
       font-size: 1.25rem;
     }
+  
+  .click-glow:active {
+    box-shadow: 0 0 15px 6px rgba(255, 255, 255, 0.8), 0 0 8px 4px currentColor;
+    transform: scale(0.96);
+    transition: all 0.1s ease-in;
+  }
+</style>
 
-    /* ✨ Click glow animation */
-    .click-glow:active {
-      box-shadow: 0 0 10px 4px rgba(255, 255, 255, 0.5);
-      transform: scale(0.97);
-      transition: all 0.1s ease-in;
-    }
-  </style>
   <script>
   function adjustViewportHeight() {
     document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
