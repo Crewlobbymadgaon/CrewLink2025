@@ -13,7 +13,6 @@
       font-size: 1.25rem;
     }
 
-    /* Click Glow Effect */
     .click-glow:active {
       box-shadow:
         0 0 20px 6px rgba(255, 255, 255, 0.9),
@@ -25,7 +24,7 @@
 
   <script>
     function adjustViewportHeight() {
-      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+      document.documentElement.style.setProperty('--vh', ${window.innerHeight * 0.01}px);
     }
     window.addEventListener('resize', adjustViewportHeight);
     window.addEventListener('load', adjustViewportHeight);
@@ -33,44 +32,58 @@
 </head>
 
 <body class="flex flex-col bg-gray-50 text-gray-800" style="min-height: calc(var(--vh, 1vh) * 100);">
-  <header class="bg-blue-900 text-white text-center py-6 shadow-md">
-    <h1 class="text-3xl font-bold">RATNAGIRI LOBBY</h1>
 
-  </header>
+ <!-- Taller Header with Home Icon Bottom Left -->
+<header class="relative bg-gradient-to-r from-blue-800 via-blue-600 to-blue-800 text-white text-center py-12 shadow-md">
+  <!-- Home Icon in Bottom Left -->
+  <a href="index.html"
+     class="absolute bottom-2 left-4 text-xl hover:scale-110 transition-transform duration-200"
+     title="Home">
+    🏠
+  </a>
+
+  <!-- Title -->
+  <h1 class="text-3xl font-bold transition duration-300 hover:scale-105">
+    RATNAGIRI LOBBY
+  </h1>
+</header>
 
   <main class="flex-1 max-w-3xl mx-auto py-10 px-4 text-center">
     <p class="mb-6 text-lg">Select Your Link</p>
     <div class="flex flex-col gap-4 sm:flex-row justify-center">
 
-      <!-- Example Link Buttons -->
+      <!-- Gradient-Matching Link Buttons -->
       <a href="RN_Link_1.html"
-         class="click-glow bg-indigo-600 text-white px-6 py-3 rounded shadow-md hover:bg-indigo-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2">
+         class="click-glow bg-gradient-to-r from-blue-800 to-blue-600 text-white px-6 py-3 rounded shadow-md hover:from-blue-900 hover:to-blue-700 hover:scale-105 active:scale-95 transform transition duration-300">
         Link 1
       </a>
 
       <a href="RN_Link_2.html"
-         class="click-glow bg-indigo-600 text-white px-6 py-3 rounded shadow-md hover:bg-indigo-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2">
+         class="click-glow bg-gradient-to-r from-blue-800 to-blue-600 text-white px-6 py-3 rounded shadow-md hover:from-blue-900 hover:to-blue-700 hover:scale-105 active:scale-95 transform transition duration-300">
         Link 2
       </a>
 
-      <a href="ratnagiri_link3.html"
-         class="click-glow bg-indigo-600 text-white px-6 py-3 rounded shadow-md hover:bg-indigo-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2">
+      <a href="RN_Link_3.html"
+         class="click-glow bg-gradient-to-r from-blue-800 to-blue-600 text-white px-6 py-3 rounded shadow-md hover:from-blue-900 hover:to-blue-700 hover:scale-105 active:scale-95 transform transition duration-300">
         Link 3
       </a>
 
     </div>
   </main>
-<!-- Outline Bold Back Button Above Footer -->
-<div class="text-center mb-4">
-  <a href="index.html"
-     class="click-glow inline-block border border-blue-600 text-blue-600 font-semibold text-sm px-6 py-2 rounded-md hover:bg-blue-600 hover:text-white transition duration-300">
-    ⬅️ Back
-  </a>
-</div>
-</div>
-</div>
-  <footer class="text-center text-sm text-gray-500 py-4 bg-gray-100">
+
+  <!-- Centered Back Button -->
+  <div class="text-center mb-4">
+    <a href="index.html"
+       class="click-glow inline-block bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold text-sm px-6 py-2 rounded-md shadow hover:from-blue-700 hover:to-blue-900 transition duration-300">
+      ⬅️ Back
+    </a>
+  </div>
+ 
+
+  <!-- Lighter Gradient Footer -->
+  <footer class="text-center text-sm text-gray-800 py-4 bg-gradient-to-r from-blue-200 to-blue-300">
     © 2025 Combined Crew Lobby Madgaon
   </footer>
+
 </body>
 </html>
