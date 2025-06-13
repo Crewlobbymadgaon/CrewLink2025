@@ -2,7 +2,7 @@
   <head>  
   <meta charset="UTF-8" />  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
-  <title>Ratnagiri Link 2</title>  
+  <title>Ratnagiri Link 1</title>  
   <script src="https://cdn.tailwindcss.com"></script>  
   <style>
   .duty-cell {
@@ -17,12 +17,25 @@
     background-color: #e0f2fe !important; /* Same blue as row */
   }
 </style>
+     <script>
+    function adjustViewportHeight() {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    }
+    window.addEventListener('resize', adjustViewportHeight);
+    window.addEventListener('load', adjustViewportHeight);
+  </script>
 </head> 
-  <body class="bg-gray-50 text-gray-800" data-link-id="RN_Link_2">
- <header class="bg-blue-900 text-white text-center py-5 sticky top-0 z-50 shadow-md">
+ <body class="bg-gray-50 text-gray-800" data-link-id="RN_Link_2">
+
+<header class="bg-blue-900 text-white text-center py-5 sticky top-0 z-50 shadow-md">
   <h1 class="text-2xl sm:text-3xl font-bold">Ratnagiri Crew Link - 2</h1>
   <h2 class="text-lg sm:text-xl font-medium mt-1">(07 Men)</h2>
   <p class="text-xs sm:text-sm mt-1">Monsoon - 2025</p>
+  <a href="index.html"
+     class="absolute bottom-2 left-4 text-xl hover:scale-110 transition-transform duration-200"
+     title="Home">
+    🏠
+  </a>
 </header>
 
   <!-- rest of page -->
@@ -34,14 +47,14 @@
 
     <thead class="bg-blue-200">
       <tr>
-        <th class="border px-3 py-2 sticky top-0 left-0 z-20 bg-blue-200">Crew</th>
-        <th class="border px-3 py-2 sticky top-0 z-10 bg-blue-200">Sunday</th>
-        <th class="border px-3 py-2 sticky top-0 z-10 bg-blue-200">Monday</th>
-        <th class="border px-3 py-2 sticky top-0 z-10 bg-blue-200">Tuesday</th>
-        <th class="border px-3 py-2 sticky top-0 z-10 bg-blue-200">Wednesday</th>
-        <th class="border px-3 py-2 sticky top-0 z-10 bg-blue-200">Thursday</th>
-        <th class="border px-3 py-2 sticky top-0 z-10 bg-blue-200">Friday</th>
-        <th class="border px-3 py-2 sticky top-0 z-10 bg-blue-200">Saturday</th>
+        <th class="border px-3 py-2 sticky top-0 left-0 z-40 bg-blue-200">Crew</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-200">Sunday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-200">Monday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-200">Tuesday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-200">Wednesday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-200">Thursday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-200">Friday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-200">Saturday</th>
       </tr>
     </thead>
 
@@ -49,380 +62,770 @@
 <!-- Row 1 -->  
           
 <tr class="bg-white">  
-<td class="border px-3 py-2 font-semibold sticky left-0 z-10 bg-white">Crew 1</td>
-<!-- And similarly for Crew 2, Crew 3, etc. -->
+
+<td class="sticky left-0 z-30 bg-white border-2 px-3 py-2">
+<div 
+    class="w-8 h-8 rounded-full bg-blue-200 text-blue-800 shadow-md
+           flex items-center justify-center font-bold mx-auto shadow-sm 
+           transition duration-300 cursor-pointer hover:bg-blue-300"
+    onclick="highlightCircle(this)">
+    1
+</div>
+</td>
          
+<!-- Row 1 sun -->
 
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-        <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-        <div class="text-blue-800 font-bold text-base mb-[2px]">11099</div>
-<!-- Bottom Train Number -->
-        <div class="text-green-700 font-bold text-base pt-[2px] border-t border-gray-300">12202</div>
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
+
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">11099</div>
+
+  <!-- Divider -->
+  <div class="w-full max-w-[40px] border-t-2 border-gray-400"></div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">12202</div>
+</div>
+</td> 
+
+<!-- Row 1 Mon-->
+
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td
+
+<!-- Row 1 tue-->
+
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Up Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 4l-6 6h12l-6-6z"/>
+    </svg>
+  </div>
+
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-red-600 mb-[1px]">12217</div>
+
+  <!-- Divider -->
+  <div class="w-full max-w-[56px] border-t-2 border-gray-400"></div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-green-600 mt-[3px]">SP/50103</div>
+</div>
 </td>
 
+<!-- Row 1 wed-->
 
-<td class="border px-3 py-2 text-gray-800 font-bold">—</td>
-        
+ <td class="border px-3 py-2 bg-gray-100 text-gray-500 font-semibold">Rest</td>
 
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid red;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">12217</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">SP/50103</div>
+<!-- Row 1 thu-->
+
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
+
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">22119</div>
+
+  <!-- Divider -->
+  <div class="w-full max-w-[40px] border-t-2 border-gray-400"></div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">16346</div>
+</div>
 </td>
-            
-            
-<td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
-            
-            
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">22119</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">16346</div>
-</td>            
-            
-            
-<td class="border px-3 py-2 text-gray-800 font-bold">—</td>
 
+<!-- Row 1 fri-->
 
- <td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">12978</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">22476</div>
-</td>        
-            
-            
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td> 
+
+<!-- Row 1 sat-->
+         
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
+
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">12978</div>
+
+  <!-- Divider -->
+  <div class="w-full max-w-[40px] border-t-2 border-gray-400"></div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">22476</div>
+</div>
+</td> 
+      
 <!-- Row 2 -->  
           
 <tr class="bg-blue-50">  
-<td class="border px-3 py-2 font-semibold sticky left-0 z-10 bg-white">Crew 2</td> 
-            
-            
-<td class="border px-3 py-2 text-gray-800 font-bold">—</td>
 
+<td class="sticky left-0 z-30 bg-white border-2 px-3 py-2">
+<div 
+    class="w-8 h-8 rounded-full bg-blue-200 text-blue-800 shadow-md
+           flex items-center justify-center font-bold mx-auto shadow-sm 
+           transition duration-300 cursor-pointer hover:bg-blue-300"
+    onclick="highlightCircle(this)">
+    2
+</div>
+</td>
 
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">11003</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">SP/20112</div>
-</td> 
+<!-- Row 2 sun -->
 
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td> 
+            
+<!-- Row 2 Mon-->
 
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">12619</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">22655</div>
-</td> 
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
 
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">11003</div>
 
-<td class="border px-3 py-2 text-gray-800 font-bold">—</td>
+  <!-- Divider -->
+  <div class="w-full max-w-[56px] border-t-2 border-gray-400"></div>
 
-
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid red;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">11004</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">16345</div>
-</td>             
-            
-            
-<td class="border px-3 py-2 text-gray-800 font-bold">—</td>           
- 
- 
-<td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>           
-            
-
-<!-- Row 3 -->
-
-<tr class="bg-white"> 
-<td class="border px-3 py-2 font-semibold sticky left-0 z-10 bg-white">Crew 3</td>             
-            
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">SP/20111</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">11004</div>
-</td>             
- 
-            
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid red;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">11004</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">16345</div>
-</td>             
-            
-            
-<td class="border px-3 py-2 text-gray-800 font-bold">—</td>             
-            
-            
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid red;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">12449</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">12218</div>
-</td>            
-            
- 
-<td class="border px-3 py-2 text-gray-800 font-bold">—</td>              
-          
-            
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">11003</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">SP/20112</div>
-</td>            
-          
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">02198</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">12620</div>
-</td>     
-
-
-<!-- Row 4 --> 
-
-<tr class="bg-blue-50">  
-<td class="border px-3 py-2 font-semibold sticky left-0 z-10 bg-white">Crew 4</td>                
-            
-            
-<td class="border px-3 py-2 text-gray-800 font-bold">—</td>            
-            
-            
-<td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td> 
-
-
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid red;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">16346</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">19260</div>
-</td>            
-            
-            
-<td class="border px-3 py-2 text-gray-800 font-bold">—</td>            
-            
-            
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">SP/20111</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">11004</div>
-</td>             
-            
-            
-<td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td> 
-
-
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">11003</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">SP/20112</div>
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">SP/20112</div>
+</div>
 </td>  
 
+<!-- Row 2 tue-->
+
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
+
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">12619</div>
+
+  <!-- Divider -->
+  <div class="w-full max-w-[40px] border-t-2 border-gray-400"></div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">22655</div>
+</div>
+</td> 
+   
+<!-- Row 2 wed-->
+
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td> 
+
+<!-- Row 2 thu-->
+         
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- UP Arrow -->
+  <div class="absolute top-0.5 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 4l-6 6h12l-6-6z"/>
+    </svg>
+  </div>
+
+  <!-- Train Numbers with Divider -->
+  <div class="flex flex-col items-center text-center leading-none font-bold">
+    <!-- Top Train Number -->
+    <div class="text-red-600 mb-[1px]">11004</div>
+
+    <!-- Divider -->
+    <div class="w-full max-w-[40px] border-t-2 border-gray-400"></div>
+
+    <!-- Bottom Train Number -->
+    <div class="text-green-600 mt-[3px]">16345</div>
+  </div>
+</td>     
+
+<!-- Row 2 fri-->
+
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td> 
+
+<!-- Row 2 sat-->
+         
+<td class="border px-3 py-2 bg-gray-100 text-gray-500 font-semibold">Rest</td>
+
+<!-- Row 3 -->  
+          
+<tr class="bg-white">  
+
+<td class="sticky left-0 z-30 bg-white border-2 px-3 py-2">
+<div 
+    class="w-8 h-8 rounded-full bg-blue-200 text-blue-800 shadow-md
+           flex items-center justify-center font-bold mx-auto shadow-sm 
+           transition duration-300 cursor-pointer hover:bg-blue-300"
+    onclick="highlightCircle(this)">
+    3
+</div>
+</td>
+
+<!-- Row 3 sun-->
+
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
+
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">SP/20111</div>
+
+  <!-- Divider -->
+  <div class="w-full max-w-[56px] border-t-2 border-gray-400"></div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">11004</div>
+</div>
+</td>
+
+<!-- Row 3 mon-->
+         
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- UP Arrow -->
+  <div class="absolute top-0.5 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 4l-6 6h12l-6-6z"/>
+    </svg>
+  </div>
+
+  <!-- Train Numbers with Divider -->
+  <div class="flex flex-col items-center text-center leading-none font-bold">
+    <!-- Top Train Number -->
+    <div class="text-red-600 mb-[1px]">11004</div>
+
+    <!-- Divider -->
+    <div class="w-full max-w-[40px] border-t-2 border-gray-400"></div>
+
+    <!-- Bottom Train Number -->
+    <div class="text-green-600 mt-[3px]">16345</div>
+  </div>
+</td>     
+
+<!-- Row 3 tue-->
+
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td> 
+
+<!-- Row 3 wed-->
+         
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- UP Arrow -->
+  <div class="absolute top-0.5 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 4l-6 6h12l-6-6z"/>
+    </svg>
+  </div>
+
+  <!-- Train Numbers with Divider -->
+  <div class="flex flex-col items-center text-center leading-none font-bold">
+    <!-- Top Train Number -->
+    <div class="text-red-600 mb-[1px]">12449</div>
+
+    <!-- Divider -->
+    <div class="w-full max-w-[40px] border-t-2 border-gray-400"></div>
+
+    <!-- Bottom Train Number -->
+    <div class="text-green-600 mt-[3px]">12218</div>
+  </div>
+</td> 
+
+<!-- Row 3 thu-->
+
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td>  
+
+<!-- Row 3 fri-->
+
+ <td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
+
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">11003</div>
+
+  <!-- Divider -->
+  <div class="w-full max-w-[56px] border-t-2 border-gray-400"></div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">SP/20112</div>
+</div>
+</td>
+
+<!-- Row 3 sat-->
+
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
+
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">02198</div>
+
+  <!-- Divider -->
+  <div class="w-full max-w-[40px] border-t-2 border-gray-400"></div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">12620</div>
+</div>
+</td>
+
+<!-- Row 4 -->
+
+<tr class="bg-white">  
+
+<td class="sticky left-0 z-30 bg-white border-2 px-3 py-2">
+<div 
+    class="w-8 h-8 rounded-full bg-blue-200 text-blue-800 shadow-md
+           flex items-center justify-center font-bold mx-auto shadow-sm 
+           transition duration-300 cursor-pointer hover:bg-blue-300"
+    onclick="highlightCircle(this)">
+    4
+</div>
+</td>
+
+<!-- Row 4 sun-->
+
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td>  
+
+<!-- Row 4 mon-->
+
+<td class="border px-3 py-2 bg-gray-100 text-gray-500 font-semibold">Rest</td>
+
+<!-- Row 4 tue-->
+
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- UP Arrow -->
+  <div class="absolute top-0.5 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 4l-6 6h12l-6-6z"/>
+    </svg>
+  </div>
+
+  <!-- Train Numbers with Divider -->
+  <div class="flex flex-col items-center text-center leading-none font-bold">
+    <!-- Top Train Number -->
+    <div class="text-red-600 mb-[1px]">16346</div>
+
+    <!-- Divider -->
+    <div class="w-full max-w-[40px] border-t-2 border-gray-400"></div>
+
+    <!-- Bottom Train Number -->
+    <div class="text-green-600 mt-[3px]">19260</div>
+  </div>
+</td>
+
+<!-- Row 4 wed-->
+
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td>
+
+<!-- Row 4 thu-->
+
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
+
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">SP/20111</div>
+
+  <!-- Divider -->
+  <div class="w-full max-w-[56px] border-t-2 border-gray-400"></div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">11004</div>
+</div>
+</td>
+
+<!-- Row 4 fri-->
+
+   <td class="border px-3 py-2 bg-gray-100 text-gray-500 font-semibold">Rest</td>
             
+<!-- Row 4 sat-->
+
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
+
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">11003</div>
+
+  <!-- Divider -->
+  <div class="w-full max-w-[56px] border-t-2 border-gray-400"></div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">SP/20112</div>
+</div>
+</td>
+
 <!-- Row 5 -->
 
 <tr class="bg-white">  
-<td class="border px-3 py-2 font-semibold sticky left-0 z-10 bg-white">Crew 5</td>                 
-            
-            
-<td class="border px-3 py-2 text-gray-800 font-bold">—</td>           
-            
-            
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">20111</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">12617</div>
-</td>            
-            
-            
-<td class="border px-3 py-2 text-gray-800 font-bold">—</td>            
-            
-            
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">11003</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">SP/20112</div>
-</td>            
-            
-            
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">12619</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">22149</div>
+
+<td class="sticky left-0 z-30 bg-white border-2 px-3 py-2">
+<div 
+    class="w-8 h-8 rounded-full bg-blue-200 text-blue-800 shadow-md
+           flex items-center justify-center font-bold mx-auto shadow-sm 
+           transition duration-300 cursor-pointer hover:bg-blue-300"
+    onclick="highlightCircle(this)">
+    5
+</div>
+</td>
+
+<!-- Row 5 sun-->
+
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td>  
+
+<!-- Row 5 mon-->
+
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
+
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">20111</div>
+
+  <!-- Divider -->
+  <div class="w-full max-w-[40px] border-t-2 border-gray-400"></div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">12617</div>
+</div>
+</td>
+
+<!-- Row 5 tue-->
+
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td>
+
+<!-- Row 5 wed-->
+
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
+
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">11003</div>
+
+  <!-- Divider -->
+  <div class="w-full max-w-[56px] border-t-2 border-gray-400"></div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">SP/20112</div>
+</div>
+</td>
+
+<!-- Row 5 thu-->
+
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
+
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">12619</div>
+
+  <!-- Divider -->
+  <div class="w-full max-w-[40px] border-t-2 border-gray-400"></div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">22149</div>
+</div>
+</td>
+
+<!-- Row 5 fri-->
+
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td>
+
+<!-- Row 5 sat-->
+         
+ <td class="border px-3 py-2 bg-gray-100 text-gray-500 font-semibold">Rest</td> 
+
+<!-- Row 6 --> 
+
+<tr class="bg-white">  
+
+<td class="sticky left-0 z-30 bg-white border-2 px-3 py-2">
+<div 
+    class="w-8 h-8 rounded-full bg-blue-200 text-blue-800 shadow-md
+           flex items-center justify-center font-bold mx-auto shadow-sm 
+           transition duration-300 cursor-pointer hover:bg-blue-300"
+    onclick="highlightCircle(this)">
+    6
+</div>
 </td> 
 
+<!-- Row 6 sun-->
 
-<td class="border px-3 py-2 text-gray-800 font-bold">—</td>  
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
 
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">11003</div>
 
-<td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>            
-            
-          
-<!-- Row 6 -->  
+  <!-- Divider -->
+  <div class="w-full max-w-[56px] border-t-2 border-gray-400"></div>
 
-<tr class="bg-blue-50">  
-<td class="border px-3 py-2 font-semibold sticky left-0 z-10 bg-white">Crew 6</td>              
-            
-            
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">11003</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">SP/20112</div>
-</td>            
-                 
-            
-<td class="border px-3 py-2 text-gray-800 font-bold">—</td>              
-            
-            
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">12133</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">12134</div>
-</td>            
-            
-            
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid red;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">SP/11004</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">16345</div>
-</td>            
-            
-            
-<td class="border px-3 py-2 text-gray-800 font-bold">—</td>             
-            
-            
-<td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td> 
-
-
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">20111</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">12217</div>
-</td>             
-            
- <!-- Row 7 --> 
- 
- <tr class="bg-white"> 
-<td class="border px-3 py-2 font-semibold sticky left-0 z-10 bg-white">Crew 7</td>               
-            
-            
-<td class="border px-3 py-2 text-gray-800 font-bold">—</td>  
-
-
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid red;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">16346</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">12450</div>
-</td>             
-            
-            
-<td class="border px-3 py-2 text-gray-800 font-bold">—</td>          
-            
-            
- <td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid green;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">SP/20111</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">11004</div>
-</td>           
-            
-            
-<td class="border px-3 py-2 bg-red-100 text-red-700 font-semibold">Rest</td>  
-
-
-<td class="relative border px-3 py-4 text-center align-top">
-<!-- Direction Arrow -->
-      <div class="absolute top-1 right-1" style="width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid red;"></div>
-<!-- Top Train Number -->
-     <div class="text-blue-800 font-bold text-base mb-1">16346</div>
-<!-- Bottom Train Number -->
-     <div class="text-green-700 font-bold text-base pt-1 border-t border-gray-300">12218</div>
-</td>            
-                  
- <td class="border px-3 py-2 text-gray-800 font-bold">—</td>          
-            
-            
-      </tbody>  
-      </table>  
-
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">SP/20112</div>
 </div>
-<div class="text-center mt-6">
-<a href="RN_Link_Menu.html" class="inline-block bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition">
-Back
-</a>
+</td>
 
+<!-- Row 6 mon-->
+         
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td> 
+
+<!-- Row 6 tue-->
+
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
+
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">12133</div>
+
+  <!-- Divider -->
+  <div class="w-full max-w-[40px] border-t-2 border-gray-400"></div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">12134</div>
+</div>
+</td>
+
+<!-- Row 6 wed-->
+         
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- UP Arrow -->
+  <div class="absolute top-0.5 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 4l-6 6h12l-6-6z"/>
+    </svg>
+  </div>
+
+  <!-- Train Numbers with Divider -->
+  <div class="flex flex-col items-center text-center leading-none font-bold">
+    <!-- Top Train Number -->
+    <div class="text-red-600 mb-[1px]">SP/11004</div>
+
+    <!-- Divider -->
+    <div class="w-full max-w-[56px] border-t-2 border-gray-400"></div>
+
+    <!-- Bottom Train Number -->
+    <div class="text-green-600 mt-[3px]">16345</div>
+  </div>
+</td>
+
+<!-- Row 6 thu-->
+
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td> 
+
+<!-- Row 6 fri-->
+         
+<td class="border px-3 py-2 bg-gray-100 text-gray-500 font-semibold">Rest</td>
+
+<!-- Row 6 sat-->
+
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
+
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">20111</div>
+
+  <!-- Divider -->
+  <div class="w-full max-w-[40px] border-t-2 border-gray-400"></div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">12217</div>
+</div>
+</td>
+
+<!-- Row 7 --> 
+ 
+<tr class="bg-white">  
+
+<td class="sticky left-0 z-30 bg-white border-2 px-3 py-2">
+<div 
+    class="w-8 h-8 rounded-full bg-blue-200 text-blue-800 shadow-md
+           flex items-center justify-center font-bold mx-auto shadow-sm 
+           transition duration-300 cursor-pointer hover:bg-blue-300"
+    onclick="highlightCircle(this)">
+    7
+</div>
+</td> 
+
+<!-- Row 7 sun-->
+
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td> 
+
+<!-- Row 7 mon-->
+         
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- UP Arrow -->
+  <div class="absolute top-0.5 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 4l-6 6h12l-6-6z"/>
+    </svg>
+  </div>
+
+  <!-- Train Numbers with Divider -->
+  <div class="flex flex-col items-center text-center leading-none font-bold">
+    <!-- Top Train Number -->
+    <div class="text-red-600 mb-[1px]">16346</div>
+
+    <!-- Divider -->
+    <div class="w-full max-w-[40px] border-t-2 border-gray-400"></div>
+
+    <!-- Bottom Train Number -->
+    <div class="text-green-600 mt-[3px]">12450</div>
+  </div>
+</td>
+
+<!-- Row 7 tue-->
+
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td> 
+
+<!-- Row 7 wed-->
+         
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- Down Arrow -->
+  <div class="absolute top-1 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 16l6-6H4l6 6z"/>
+    </svg>
+  </div>
+
+<div class="flex flex-col items-center text-center leading-none font-bold">
+  <!-- Top Train Number -->
+  <div class="text-green-600 mb-[1px]">SP/20111</div>
+
+  <!-- Divider -->
+  <div class="w-full max-w-[56px] border-t-2 border-gray-400"></div>
+
+  <!-- Bottom Train Number -->
+  <div class="text-red-600 mt-[2px]">11004</div>
+</div>
+</td>
+
+<!-- Row 7 thu-->
+
+<td class="border px-3 py-2 bg-gray-100 text-gray-500 font-semibold">Rest</td>
+
+<!-- Row 7 fri-->
+
+<td class="relative z-10 border px-2 py-3 text-center">
+  <!-- UP Arrow -->
+  <div class="absolute top-0.5 right-1">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 4l-6 6h12l-6-6z"/>
+    </svg>
+  </div>
+
+  <!-- Train Numbers with Divider -->
+  <div class="flex flex-col items-center text-center leading-none font-bold">
+    <!-- Top Train Number -->
+    <div class="text-red-600 mb-[1px]">16346</div>
+
+    <!-- Divider -->
+    <div class="w-full max-w-[40px] border-t-2 border-gray-400"></div>
+
+    <!-- Bottom Train Number -->
+    <div class="text-green-600 mt-[3px]">12218</div>
+  </div>
+</td>
+
+<!-- Row 7 sat-->
+
+<td class="border px-3 py-2 text-gray-800 font-bold">—</td> 
+
+
+</tbody>  
+</table>  
 </div>  
   </main> 
   <script src="highlight.js"></script>
-  <footer class="text-center text-sm text-gray-500 py-4">  
-    ©2025 Combined Crew Lobby Madgaon  
-  </footer>  
-   
-
+  <!-- Centered Back Button -->
+  <div class="text-center mb-4">
+    <a href="RN_Link_Menu.html"
+       class="click-glow inline-block bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold text-sm px-6 py-2 rounded-md shadow hover:from-blue-700 hover:to-blue-900 transition duration-300">
+      ⬅️ Back
+    </a>
+  </div>
+ 
+<footer class="text-center text-sm text-gray-500 py-4 bg-gray-100">
+      © 2025 Crew Link | KR – All rights reserved.
+  </footer>
 </body>  
 </html>
