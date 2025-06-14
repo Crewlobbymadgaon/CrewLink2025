@@ -1,4 +1,3 @@
-<script>
 document.addEventListener("DOMContentLoaded", () => {
   const table = document.querySelector("table");
   const rows = table?.querySelectorAll("tbody tr") || [];
@@ -136,4 +135,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   autoAdvance();
 });
-</script>
