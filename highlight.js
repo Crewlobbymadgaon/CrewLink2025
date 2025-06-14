@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const table = document.querySelector("table");
   const rows = table?.querySelectorAll("tbody tr") || [];
-  const totalDays = 7; // Sunday to Saturday
+  const totalDays = 8; // Sunday to Saturday
   const linkId = document.body.dataset.linkId;
 
   if (!table || !linkId) return;
