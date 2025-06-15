@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Madgaon - Link Menu</title>
+  <link rel="icon" href="favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .subheading {
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+    }
+
+    .click-glow:active {
+      box-shadow:
+        0 0 20px 6px rgba(255, 255, 255, 0.9),
+        0 0 12px 8px currentColor;
+      transform: scale(0.94);
+      transition: box-shadow 0.3s ease-out, transform 0.1s ease-in;
+    }
+  </style>
+
+  <script>
+    function adjustViewportHeight() {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    }
+    window.addEventListener('resize', adjustViewportHeight);
+    window.addEventListener('load', adjustViewportHeight);
+  </script>
+</head>
+
+<body class="flex flex-col bg-gray-50 text-gray-800" style="min-height: calc(var(--vh, 1vh) * 100);">
+
+ <!-- Taller Header with Home Icon Bottom Left -->
+<header class="relative bg-gradient-to-r from-green-800 via-green-600 to-green-800 text-white text-center py-12 shadow-md">
+  <div><h1 class="text-3xl font-bold transition duration-300 hover:scale-105">
+    MADGAON LOBBY
+  </h1>
+  </div>
+ <!-- Home Button (fixed image tag) -->
+  <a href="index.html"
+     class="absolute right-4 bottom-2 sm:bottom-4 w-10 h-10 sm:w-12 sm:h-12 hover:scale-110 transition-transform duration-200"
+     title="Home">
+    <img src="homegreen.png" alt="Home" class="w-full h-full rounded-full shadow-md" />
+  </a>
+</header>
+
+  <main class="flex-1 max-w-3xl mx-auto py-10 px-4 text-center">
+    <p class="mb-6 text-lg">Select Your Link</p>
+    <div class="flex flex-col gap-4 sm:flex-row justify-center">
+
+      <!-- Gradient-Matching Link Buttons -->
+      <a href="MAO_Link_1.html"
+         class="click-glow bg-gradient-to-r from-green-800 to-green-600 text-white px-6 py-3 rounded shadow-md hover:from-green-900 hover:to-green-700 hover:scale-105 active:scale-95 transform transition duration-300">
+        Link 1
+      </a>
+
+      <a href="MAO_Link_2.html"
+         class="click-glow bg-gradient-to-r from-green-800 to-green-600 text-white px-6 py-3 rounded shadow-md hover:from-green-900 hover:to-green-700 hover:scale-105 active:scale-95 transform transition duration-300">
+        Link 2
+      </a>
+
+      <a href="MAO_Link_3.html"
+         class="click-glow bg-gradient-to-r from-green-800 to-green-600 text-white px-6 py-3 rounded shadow-md hover:from-green-900 hover:to-green-700 hover:scale-105 active:scale-95 transform transition duration-300">
+        Link 3
+      </a>
+      
+      <a href="MAO_Link_4.html"
+         class="click-glow bg-gradient-to-r from-green-800 to-green-600 text-white px-6 py-3 rounded shadow-md hover:from-green-900 hover:to-green-700 hover:scale-105 active:scale-95 transform transition duration-300">
+        Link 4
+      </a>
+
+    </div>
+  </main>
+
+  
+  </div>
+ 
+
+  <<footer class="text-center text-sm text-gray-500 py-4 bg-gray-100">
+      © 2025 Crew Link | KR – All rights reserved.
+  </footer>
+  </footer>
+
+</body>
+</html>
