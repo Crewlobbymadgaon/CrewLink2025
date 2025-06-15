@@ -39,17 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
       row.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
-
-  function isValidCell(cell, colIdx) {
-    const text = cell?.textContent.trim();
-    return (
-      colIdx > 0 &&
-      cell &&
-      !["", "Rest", "—"].includes(text)
-    );
-  }
-
-  function highlight(rowIdx, colIdx) {
+function isValidCell(cell, colIdx) {
+  const text = cell?.textContent.trim();
+  return colIdx > 0 && cell && text !== "" && text !== "-" && text !== "—";
+}
+  
+ function highlight(rowIdx, colIdx) {
     if (rowIdx >= rows.length || colIdx >= totalDays) return;
 
     const row = rows[rowIdx];
