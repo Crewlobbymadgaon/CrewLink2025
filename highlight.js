@@ -110,23 +110,34 @@ function isValidCell(cell, colIdx) {
       if (colIdx === 0) return; // Skip crew column
 
       cell.addEventListener("click", () => {
-        if (isClicking) return;
-        isClicking = true;
-        setTimeout(() => (isClicking = false), 300); // prevent rapid clicking
+  if (isClicking) return;
+  isClicking = true;
+  setTimeout(() => (isClicking = false), 300);
 
-        if (!isValidCell(cell, colIdx)) return;
+  if (!isValidCell(cell, colIdx)) return;
 
-        if (savedRow === rowIdx && savedCol === colIdx && activeLinkId === linkId) {
-          clearHighlights();
-          clearSavedDuty();
-        } else {
-          savedRow = rowIdx;
-          savedCol = colIdx;
-          highlight(rowIdx, colIdx);
-        }
-      });
+  const duty = cell.textContent.trim();
+  const crew = row.cells[0].textContent.trim();
+
+  if (savedRow === rowIdx && savedCol === colIdx && activeLinkId === linkId) {
+    showConfirmModal(`Clear duty for ${crew}?`).then(({ confirmed }) => {
+      if (confirmed) {
+        clearHighlights();
+        clearSavedDuty();
+      }
     });
-  });
+  } else {
+    showConfirmModal(`Confirm duty for ${crew} as "${duty}"?`).then(({ confirmed, lp, alp }) => {
+      if (confirmed) {
+        localStorage.setItem("lpName", lp);
+        localStorage.setItem("alpName", alp);
+        savedRow = rowIdx;
+        savedCol = colIdx;
+        highlight(rowIdx, colIdx);
+      }
+    });
+  }
+});
 
   autoAdvance();
 });
