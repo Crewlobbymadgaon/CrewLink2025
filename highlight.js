@@ -152,15 +152,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Dummy confirm modal (you can replace with your own modal UI)
   function showConfirmModal(message) {
-    return new Promise((resolve) => {
-      const confirmed = confirm(message);
-      if (confirmed) {
-        const lp = prompt("Enter LP name:");
-        const alp = prompt("Enter ALP name:");
-        resolve({ confirmed: true, lp, alp });
-      } else {
-        resolve({ confirmed: false });
-      }
-    });
-  }
-});
+  return new Promise((resolve) => {
+    const modal = document.getElementById("confirmModal");
+    const msgEl = document.getElementById("modalMessage");
+    const lpInput = document.getElementById("lpName");
+    const alpInput = document.getElementById("alpName");
+    const confirmBtn = document.getElementById("confirmYes");
+    const cancelBtn = document.getElementById("confirmNo");
+
+    msgEl.textContent = message;
+    lpInput.value = localStorage.getItem("lpName") || "";
+    alpInput.value = localStorage.getItem("alpName") || "";
+
+    modal.classList.remove("hidden");
+
+    function cleanup() {
+      modal.classList.add("hidden");
+      confirmBtn.removeEventListener("click", onConfirm);
+      cancelBtn.removeEventListener("click", onCancel);
+    }
+
+    function onConfirm() {
+      const lp = lpInput.value.trim();
+      const alp = alpInput.value.trim();
+      cleanup();
+      resolve({ confirmed: true, lp, alp });
+    }
+
+    function onCancel() {
+      cleanup();
+      resolve({ confirmed: false });
+    }
+
+    confirmBtn.addEventListener("click", onConfirm);
+    cancelBtn.addEventListener("click", onCancel);
+  });
+}
