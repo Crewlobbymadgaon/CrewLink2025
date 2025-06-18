@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const today = new Date();
   const todayDateStr = today.toISOString().split("T")[0];
-
   let isClicking = false;
 
+  // Remove all highlighting from cells
   function clearHighlights() {
     table.querySelectorAll("td").forEach(cell =>
       cell.classList.remove("duty-cell", "crew-cell-highlight")
@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
+  // Clear stored duty data
   function clearSavedDuty() {
     localStorage.removeItem("dutyRow");
     localStorage.removeItem("dutyCol");
@@ -33,18 +34,22 @@ document.addEventListener("DOMContentLoaded", () => {
     savedRow = savedCol = undefined;
   }
 
+  // Smoothly scroll to the selected row
   function scrollToRow(rowIdx) {
     const row = rows[rowIdx];
     if (row) {
       row.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
-function isValidCell(cell, colIdx) {
-  const text = cell?.textContent.trim();
-  return colIdx > 0 && cell && text !== "" && text !== "-" && text !== "—";
-}
-  
- function highlight(rowIdx, colIdx) {
+
+  // Validate the clicked cell
+  function isValidCell(cell, colIdx) {
+    const text = cell?.textContent.trim();
+    return colIdx > 0 && cell && text !== "" && text !== "-" && text !== "—";
+  }
+
+  // Highlight a selected duty cell
+  function highlight(rowIdx, colIdx) {
     if (rowIdx >= rows.length || colIdx >= totalDays) return;
 
     const row = rows[rowIdx];
@@ -66,6 +71,7 @@ function isValidCell(cell, colIdx) {
     scrollToRow(rowIdx);
   }
 
+  // Automatically highlight the next duty if date changes
   function autoAdvance() {
     if (activeLinkId !== linkId) {
       clearHighlights();
@@ -80,10 +86,10 @@ function isValidCell(cell, colIdx) {
 
       const maxAttempts = rows.length * (totalDays - 1);
       for (let i = 0; i < maxAttempts; i++) {
-        nextCol = nextCol + 1;
+        nextCol++;
 
         if (nextCol >= totalDays) {
-          nextCol = 1; // skip 0 (crew column)
+          nextCol = 1; // skip 0 (crew name column)
           nextRow = (nextRow + 1) % rows.length;
         }
 
@@ -104,40 +110,57 @@ function isValidCell(cell, colIdx) {
     }
   }
 
-  // Click logic
+  // Add click listeners for all duty cells
   rows.forEach((row, rowIdx) => {
     row.querySelectorAll("td").forEach((cell, colIdx) => {
-      if (colIdx === 0) return; // Skip crew column
+      if (colIdx === 0) return; // Skip crew name column
 
       cell.addEventListener("click", () => {
-  if (isClicking) return;
-  isClicking = true;
-  setTimeout(() => (isClicking = false), 300);
+        if (isClicking) return;
+        isClicking = true;
+        setTimeout(() => (isClicking = false), 300);
 
-  if (!isValidCell(cell, colIdx)) return;
+        if (!isValidCell(cell, colIdx)) return;
 
-  const duty = cell.textContent.trim();
-  const crew = row.cells[0].textContent.trim();
+        const duty = cell.textContent.trim();
+        const crew = row.cells[0].textContent.trim();
 
-  if (savedRow === rowIdx && savedCol === colIdx && activeLinkId === linkId) {
-    showConfirmModal(`Clear duty for ${crew}?`).then(({ confirmed }) => {
-      if (confirmed) {
-        clearHighlights();
-        clearSavedDuty();
-      }
+        if (savedRow === rowIdx && savedCol === colIdx && activeLinkId === linkId) {
+          showConfirmModal(`Clear duty for ${crew}?`).then(({ confirmed }) => {
+            if (confirmed) {
+              clearHighlights();
+              clearSavedDuty();
+            }
+          });
+        } else {
+          showConfirmModal(`Confirm duty for ${crew} as "${duty}"?`).then(({ confirmed, lp, alp }) => {
+            if (confirmed) {
+              localStorage.setItem("lpName", lp);
+              localStorage.setItem("alpName", alp);
+              savedRow = rowIdx;
+              savedCol = colIdx;
+              highlight(rowIdx, colIdx);
+            }
+          });
+        }
+      });
     });
-  } else {
-    showConfirmModal(`Confirm duty for ${crew} as "${duty}"?`).then(({ confirmed, lp, alp }) => {
+  });
+
+  // Call auto highlight once after setup
+  autoAdvance();
+
+  // Dummy confirm modal (you can replace with your own modal UI)
+  function showConfirmModal(message) {
+    return new Promise((resolve) => {
+      const confirmed = confirm(message);
       if (confirmed) {
-        localStorage.setItem("lpName", lp);
-        localStorage.setItem("alpName", alp);
-        savedRow = rowIdx;
-        savedCol = colIdx;
-        highlight(rowIdx, colIdx);
+        const lp = prompt("Enter LP name:");
+        const alp = prompt("Enter ALP name:");
+        resolve({ confirmed: true, lp, alp });
+      } else {
+        resolve({ confirmed: false });
       }
     });
   }
-});
-
-  autoAdvance();
 });
