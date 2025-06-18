@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const crewCell = row.cells[0];
     const text = cell?.textContent.trim();
 
-    if (!cell || ["", "Rest", "—"].includes(text)) return;
+    if (!cell || ["", "—"].includes(text)) return;
 
     cell.classList.add("duty-cell");
     crewCell.classList.add("crew-cell-highlight");
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       cell.addEventListener("click", () => {
         const text = cell.textContent.trim();
-        if (["", "Rest", "—"].includes(text)) return;
+        if (["", "—"].includes(text)) return;
 
         // If same cell clicked again, unselect
         if (savedRow === rowIdx && savedCol === colIdx && activeLinkId === linkId) {
