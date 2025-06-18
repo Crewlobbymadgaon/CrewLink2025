@@ -1,89 +1,100 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const table = document.querySelector("table");
-    const rows = table.querySelectorAll("tbody tr");
-    const totalDays = 7; // Sunday to Saturday
+  const table = document.querySelector("table");
+  const rows = table.querySelectorAll("tbody tr");
+  const totalDays = 7; // Sunday to Saturday
+  const linkId = document.body.dataset.linkId;
 
-    let savedRow = parseInt(localStorage.getItem("dutyRow"));
-    let savedCol = parseInt(localStorage.getItem("dutyCol"));
-    let lastDutyDate = localStorage.getItem("lastDutyDate");
+  let savedRow = parseInt(localStorage.getItem("dutyRow"));
+  let savedCol = parseInt(localStorage.getItem("dutyCol"));
+  let lastDutyDate = localStorage.getItem("lastDutyDate");
+  let activeLinkId = localStorage.getItem("activeLinkId");
 
-    const today = new Date();
-    const todayDay = today.getDay(); // 0 = Sunday
+  const today = new Date();
+  const todayDateStr = today.toISOString().split('T')[0];
 
-    // Clear previous highlights
+  // Clear all highlights
   function clearHighlights() {
-  table.querySelectorAll("td").forEach(cell => {
-    cell.classList.remove("duty-cell", "crew-cell-highlight");
-  });
-  table.querySelectorAll("tr").forEach(row => {
-    row.classList.remove("active-row");
-  });
-}
+    table.querySelectorAll("td").forEach(cell => {
+      cell.classList.remove("duty-cell", "crew-cell-highlight");
+    });
+    table.querySelectorAll("tr").forEach(row => {
+      row.classList.remove("active-row");
+    });
+  }
 
-    // Highlight selected duty and row
-    function highlight(rowIdx, colIdx) {
-  clearHighlights();
+  function clearSavedDuty() {
+    localStorage.removeItem("dutyRow");
+    localStorage.removeItem("dutyCol");
+    localStorage.removeItem("lastDutyDate");
+    localStorage.removeItem("activeLinkId");
+    savedRow = savedCol = undefined;
+  }
 
-  const row = rows[rowIdx];
-  const cell = row.cells[colIdx];
-  const crewCell = row.cells[0];
-  const text = cell?.textContent.trim();
+  function highlight(rowIdx, colIdx) {
+    clearHighlights();
 
-  if (!cell || text === "" || text === "Rest" || text === "—") return;
+    const row = rows[rowIdx];
+    const cell = row.cells[colIdx];
+    const crewCell = row.cells[0];
+    const text = cell?.textContent.trim();
 
-  cell.classList.add("duty-cell");           // Yellow duty cell
-  crewCell.classList.add("crew-cell-highlight"); // Blue crew number cell
-  row.classList.add("active-row");           // Blue entire row
+    if (!cell || ["", "Rest", "—"].includes(text)) return;
 
-  localStorage.setItem("dutyRow", rowIdx);
-  localStorage.setItem("dutyCol", colIdx);
-  localStorage.setItem("lastDutyDate", today.toDateString());
-}
+    cell.classList.add("duty-cell");
+    crewCell.classList.add("crew-cell-highlight");
+    row.classList.add("active-row");
 
-    // Advance to next day automatically
-    function autoAdvance() {
-      if (isNaN(savedRow) || isNaN(savedCol)) return;
+    localStorage.setItem("dutyRow", rowIdx);
+    localStorage.setItem("dutyCol", colIdx);
+    localStorage.setItem("lastDutyDate", todayDateStr);
+    localStorage.setItem("activeLinkId", linkId);
+  }
 
-      if (lastDutyDate && today.toDateString() !== lastDutyDate) {
-        let nextCol = (savedCol + 1) % totalDays;
-        let nextRow = savedRow;
-
-        if (nextCol === 0) {
-          nextRow = (savedRow + 1) % rows.length;
-        }
-
-        savedRow = nextRow;
-        savedCol = nextCol;
-        highlight(savedRow, savedCol);
-      } else {
-        highlight(savedRow, savedCol);
-      }
+  function autoAdvance() {
+    if (activeLinkId !== linkId) {
+      clearHighlights(); // Make sure no old highlight shows
+      return;
     }
 
-    // Handle clicks
-    rows.forEach((row, rowIdx) => {
-      row.querySelectorAll("td").forEach((cell, colIdx) => {
-        if (colIdx === 0) return;
+    if (isNaN(savedRow) || isNaN(savedCol)) return;
 
-        cell.addEventListener("click", () => {
-          const text = cell.textContent.trim();
-          if (text === "" || text === "Rest" || text === "—") return;
+    if (lastDutyDate && todayDateStr !== lastDutyDate) {
+      let nextCol = (savedCol + 1) % totalDays;
+      let nextRow = savedRow;
 
-          if (savedRow === rowIdx && savedCol === colIdx) {
-            clearHighlights();
-            localStorage.removeItem("dutyRow");
-            localStorage.removeItem("dutyCol");
-            localStorage.removeItem("lastDutyDate");
-            savedRow = savedCol = undefined;
-          } else {
-            savedRow = rowIdx;
-            savedCol = colIdx;
-            highlight(rowIdx, colIdx);
-          }
-        });
+      if (nextCol === 0) {
+        nextRow = (savedRow + 1) % rows.length;
+      }
+
+      savedRow = nextRow;
+      savedCol = nextCol;
+      highlight(savedRow, savedCol);
+    } else {
+      highlight(savedRow, savedCol);
+    }
+  }
+
+  // Click logic
+  rows.forEach((row, rowIdx) => {
+    row.querySelectorAll("td").forEach((cell, colIdx) => {
+      if (colIdx === 0) return;
+
+      cell.addEventListener("click", () => {
+        const text = cell.textContent.trim();
+        if (["", "Rest", "—"].includes(text)) return;
+
+        // If same cell clicked again, unselect
+        if (savedRow === rowIdx && savedCol === colIdx && activeLinkId === linkId) {
+          clearHighlights();
+          clearSavedDuty();
+        } else {
+          savedRow = rowIdx;
+          savedCol = colIdx;
+          highlight(rowIdx, colIdx);
+        }
       });
     });
-
-    // Run on page load
-    autoAdvance();
   });
+
+  autoAdvance();
+});
