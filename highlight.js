@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const todayDateStr = today.toISOString().split("T")[0];
   let isClicking = false;
 
-  // Remove all highlighting from cells
   function clearHighlights() {
     table.querySelectorAll("td").forEach(cell =>
       cell.classList.remove("duty-cell", "crew-cell-highlight")
@@ -25,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  // Clear stored duty data
   function clearSavedDuty() {
     localStorage.removeItem("dutyRow");
     localStorage.removeItem("dutyCol");
@@ -34,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
     savedRow = savedCol = undefined;
   }
 
-  // Smoothly scroll to the selected row
   function scrollToRow(rowIdx) {
     const row = rows[rowIdx];
     if (row) {
@@ -42,13 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Validate the clicked cell
   function isValidCell(cell, colIdx) {
     const text = cell?.textContent.trim();
     return colIdx > 0 && cell && text !== "" && text !== "-" && text !== "—";
   }
 
-  // Highlight a selected duty cell
   function highlight(rowIdx, colIdx) {
     if (rowIdx >= rows.length || colIdx >= totalDays) return;
 
@@ -71,14 +66,13 @@ document.addEventListener("DOMContentLoaded", () => {
     scrollToRow(rowIdx);
   }
 
-  // Automatically highlight the next duty if date changes
   function autoAdvance() {
+    if (isNaN(savedRow) || isNaN(savedCol)) return;
+
     if (activeLinkId !== linkId) {
       clearHighlights();
       return;
     }
-
-    if (isNaN(savedRow) || isNaN(savedCol)) return;
 
     if (lastDutyDate && todayDateStr !== lastDutyDate) {
       let nextRow = savedRow;
@@ -87,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const maxAttempts = rows.length * (totalDays - 1);
       for (let i = 0; i < maxAttempts; i++) {
         nextCol++;
-
         if (nextCol >= totalDays) {
           nextCol = 1; // skip 0 (crew name column)
           nextRow = (nextRow + 1) % rows.length;
@@ -102,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // If no valid cell found
       clearHighlights();
       clearSavedDuty();
     } else {
@@ -110,10 +102,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Add click listeners for all duty cells
   rows.forEach((row, rowIdx) => {
     row.querySelectorAll("td").forEach((cell, colIdx) => {
-      if (colIdx === 0) return; // Skip crew name column
+      if (colIdx === 0) return;
 
       cell.addEventListener("click", () => {
         if (isClicking) return;
@@ -147,44 +138,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Call auto highlight once after setup
   autoAdvance();
 
-  // Dummy confirm modal (you can replace with your own modal UI)
   function showConfirmModal(message) {
-  return new Promise((resolve) => {
-    const modal = document.getElementById("confirmModal");
-    const msgEl = document.getElementById("modalMessage");
-    const lpInput = document.getElementById("lpName");
-    const alpInput = document.getElementById("alpName");
-    const confirmBtn = document.getElementById("confirmYes");
-    const cancelBtn = document.getElementById("confirmNo");
+    return new Promise((resolve) => {
+      const modal = document.getElementById("confirmModal");
+      const msgEl = document.getElementById("modalMessage");
+      const lpInput = document.getElementById("lpName");
+      const alpInput = document.getElementById("alpName");
+      const confirmBtn = document.getElementById("confirmYes");
+      const cancelBtn = document.getElementById("confirmNo");
 
-    msgEl.textContent = message;
-    lpInput.value = localStorage.getItem("lpName") || "";
-    alpInput.value = localStorage.getItem("alpName") || "";
+      msgEl.textContent = message;
+      lpInput.value = localStorage.getItem("lpName") || "";
+      alpInput.value = localStorage.getItem("alpName") || "";
 
-    modal.classList.remove("hidden");
+      modal.classList.remove("hidden");
 
-    function cleanup() {
-      modal.classList.add("hidden");
-      confirmBtn.removeEventListener("click", onConfirm);
-      cancelBtn.removeEventListener("click", onCancel);
-    }
+      function cleanup() {
+        modal.classList.add("hidden");
+        confirmBtn.removeEventListener("click", onConfirm);
+        cancelBtn.removeEventListener("click", onCancel);
+      }
 
-    function onConfirm() {
-      const lp = lpInput.value.trim();
-      const alp = alpInput.value.trim();
-      cleanup();
-      resolve({ confirmed: true, lp, alp });
-    }
+      function onConfirm() {
+        const lp = lpInput.value.trim();
+        const alp = alpInput.value.trim();
+        cleanup();
+        resolve({ confirmed: true, lp, alp });
+      }
 
-    function onCancel() {
-      cleanup();
-      resolve({ confirmed: false });
-    }
+      function onCancel() {
+        cleanup();
+        resolve({ confirmed: false });
+      }
 
-    confirmBtn.addEventListener("click", onConfirm);
-    cancelBtn.addEventListener("click", onCancel);
-  });
-}
+      confirmBtn.addEventListener("click", onConfirm);
+      cancelBtn.addEventListener("click", onCancel);
+    });
+  }
+});
