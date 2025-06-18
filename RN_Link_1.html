@@ -51,20 +51,7 @@
     <img src="home.png" alt="Home" class="w-full h-full rounded-full shadow-md" />
   </a>
 </header>
-   <!-- Duty Confirmation Modal -->
-<div id="confirmModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-  <div class="bg-white rounded-xl p-6 shadow-xl max-w-sm w-full text-center space-y-4">
-    <p id="modalMessage" class="text-lg font-semibold">Confirm duty?</p>
-    <div class="space-y-2">
-      <input id="lpName" type="text" placeholder="Enter LP Name" class="w-full px-3 py-2 border rounded" />
-      <input id="alpName" type="text" placeholder="Enter ALP Name" class="w-full px-3 py-2 border rounded" />
-    </div>
-    <div class="flex justify-center gap-4 pt-2">
-      <button id="modalYes" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Confirm</button>
-      <button id="modalNo" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Cancel</button>
-    </div>
-  </div>
-</div>
+   
 
 
   <!-- rest of page -->
@@ -1667,59 +1654,7 @@
 <footer class="text-center text-sm text-gray-500 py-4 bg-gray-100">
       © 2025 Crew Link | KR – All rights reserved.
   </footer>
-  <!-- Duty Confirmation Modal -->
-<div id="confirmModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-  <div class="bg-white rounded-xl p-6 shadow-xl max-w-sm w-full text-center space-y-4">
-    <p id="modalMessage" class="text-lg font-semibold">Confirm duty?</p>
-    <div class="space-y-2">
-      <input id="lpName" type="text" placeholder="Enter LP Name" class="w-full px-3 py-2 border rounded" />
-      <input id="alpName" type="text" placeholder="Enter ALP Name" class="w-full px-3 py-2 border rounded" />
-    </div>
-    <div class="flex justify-center gap-4 pt-2">
-      <button id="modalYes" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Confirm</button>
-      <button id="modalNo" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Cancel</button>
-    </div>
-  </div>
-</div>
-  <script>
-  function showConfirmModal(message) {
-    return new Promise(resolve => {
-      const modal = document.getElementById("confirmModal");
-      const msg = document.getElementById("modalMessage");
-      const yes = document.getElementById("modalYes");
-      const no = document.getElementById("modalNo");
-      const lp = document.getElementById("lpName");
-      const alp = document.getElementById("alpName");
-
-      lp.value = alp.value = "";
-      msg.textContent = message;
-      modal.classList.remove("hidden");
-
-      function clean() {
-        modal.classList.add("hidden");
-        yes.removeEventListener("click", onYes);
-        no.removeEventListener("click", onNo);
-      }
-
-      function onYes() {
-        if (!lp.value.trim() || !alp.value.trim()) {
-          alert("Enter both LP and ALP names.");
-          return;
-        }
-        clean();
-        resolve({ confirmed: true, lp: lp.value.trim(), alp: alp.value.trim() });
-      }
-
-      function onNo() {
-        clean();
-        resolve({ confirmed: false });
-      }
-
-      yes.addEventListener("click", onYes);
-      no.addEventListener("click", onNo);
-    });
-  }
-  </script>
+  
   <script src="highlight.js"></script>
 </body>  
 </html>
