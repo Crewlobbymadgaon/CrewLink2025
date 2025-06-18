@@ -1,183 +1,89 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const table = document.querySelector("table");
-  const rows = table?.querySelectorAll("tbody tr") || [];
-  const totalDays = 8; // Sunday to Saturday
-  const linkId = document.body.dataset.linkId;
+    const table = document.querySelector("table");
+    const rows = table.querySelectorAll("tbody tr");
+    const totalDays = 7; // Sunday to Saturday
 
-  if (!table || !linkId) {
-    console.warn("Table or linkId missing");
-    return;
-  }
+    let savedRow = parseInt(localStorage.getItem("dutyRow"));
+    let savedCol = parseInt(localStorage.getItem("dutyCol"));
+    let lastDutyDate = localStorage.getItem("lastDutyDate");
 
-  let savedRow = parseInt(localStorage.getItem("dutyRow"));
-  let savedCol = parseInt(localStorage.getItem("dutyCol"));
-  let lastDutyDate = localStorage.getItem("lastDutyDate");
-  let activeLinkId = localStorage.getItem("activeLinkId");
+    const today = new Date();
+    const todayDay = today.getDay(); // 0 = Sunday
 
-  const today = new Date();
-  const todayDateStr = today.toISOString().split("T")[0];
-  let isClicking = false;
-
+    // Clear previous highlights
   function clearHighlights() {
-    document.querySelectorAll(".duty-cell, .crew-cell-highlight, .active-row").forEach(el => {
-      el.classList.remove("duty-cell", "crew-cell-highlight", "active-row");
-    });
-  }
+  table.querySelectorAll("td").forEach(cell => {
+    cell.classList.remove("duty-cell", "crew-cell-highlight");
+  });
+  table.querySelectorAll("tr").forEach(row => {
+    row.classList.remove("active-row");
+  });
+}
 
-  function clearSavedDuty() {
-    localStorage.removeItem("dutyRow");
-    localStorage.removeItem("dutyCol");
-    localStorage.removeItem("lastDutyDate");
-    localStorage.removeItem("activeLinkId");
-    savedRow = savedCol = undefined;
-  }
+    // Highlight selected duty and row
+    function highlight(rowIdx, colIdx) {
+  clearHighlights();
 
-  function scrollToRow(rowIdx) {
-    const row = rows[rowIdx];
-    if (row) row.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
+  const row = rows[rowIdx];
+  const cell = row.cells[colIdx];
+  const crewCell = row.cells[0];
+  const text = cell?.textContent.trim();
 
-  function isValidCell(cell, colIdx) {
-    const text = cell?.textContent.trim();
-    return colIdx > 0 && cell && text !== "" && text !== "-" && text !== "—";
-  }
+  if (!cell || text === "" || text === "Rest" || text === "—") return;
 
-  function highlight(rowIdx, colIdx) {
-    const row = rows[rowIdx];
-    if (!row || colIdx >= totalDays) return;
+  cell.classList.add("duty-cell");           // Yellow duty cell
+  crewCell.classList.add("crew-cell-highlight"); // Blue crew number cell
+  row.classList.add("active-row");           // Blue entire row
 
-    const cell = row.cells[colIdx];
-    const crewCell = row.cells[0];
+  localStorage.setItem("dutyRow", rowIdx);
+  localStorage.setItem("dutyCol", colIdx);
+  localStorage.setItem("lastDutyDate", today.toDateString());
+}
 
-    if (!isValidCell(cell, colIdx)) {
-      console.warn("Invalid cell for highlight");
-      return;
-    }
+    // Advance to next day automatically
+    function autoAdvance() {
+      if (isNaN(savedRow) || isNaN(savedCol)) return;
 
-    clearHighlights();
-    cell.classList.add("duty-cell");
-    crewCell.classList.add("crew-cell-highlight");
-    row.classList.add("active-row");
+      if (lastDutyDate && today.toDateString() !== lastDutyDate) {
+        let nextCol = (savedCol + 1) % totalDays;
+        let nextRow = savedRow;
 
-    localStorage.setItem("dutyRow", rowIdx);
-    localStorage.setItem("dutyCol", colIdx);
-    localStorage.setItem("lastDutyDate", todayDateStr);
-    localStorage.setItem("activeLinkId", linkId);
-
-    console.log("Highlighted:", rowIdx, colIdx);
-    scrollToRow(rowIdx);
-  }
-
-  function autoAdvance() {
-    console.log("Running autoAdvance()");
-    if (isNaN(savedRow) || isNaN(savedCol)) {
-      console.warn("No saved row/col");
-      return;
-    }
-
-    if (activeLinkId !== linkId) {
-      console.log("Different linkId, skipping");
-      return;
-    }
-
-    if (lastDutyDate && todayDateStr !== lastDutyDate) {
-      let nextRow = savedRow;
-      let nextCol = savedCol;
-
-      for (let i = 0; i < rows.length * (totalDays - 1); i++) {
-        nextCol++;
-        if (nextCol >= totalDays) {
-          nextCol = 1;
-          nextRow = (nextRow + 1) % rows.length;
+        if (nextCol === 0) {
+          nextRow = (savedRow + 1) % rows.length;
         }
 
-        const nextCell = rows[nextRow]?.cells[nextCol];
-        if (isValidCell(nextCell, nextCol)) {
-          highlight(nextRow, nextCol);
-          return;
-        }
+        savedRow = nextRow;
+        savedCol = nextCol;
+        highlight(savedRow, savedCol);
+      } else {
+        highlight(savedRow, savedCol);
       }
-
-      clearHighlights();
-      clearSavedDuty();
-    } else {
-      highlight(savedRow, savedCol);
     }
-  }
 
-  rows.forEach((row, rowIdx) => {
-    row.querySelectorAll("td").forEach((cell, colIdx) => {
-      if (colIdx === 0) return;
+    // Handle clicks
+    rows.forEach((row, rowIdx) => {
+      row.querySelectorAll("td").forEach((cell, colIdx) => {
+        if (colIdx === 0) return;
 
-      cell.addEventListener("click", () => {
-        if (isClicking) return;
-        isClicking = true;
-        setTimeout(() => (isClicking = false), 300);
+        cell.addEventListener("click", () => {
+          const text = cell.textContent.trim();
+          if (text === "" || text === "Rest" || text === "—") return;
 
-        if (!isValidCell(cell, colIdx)) return;
-
-        const duty = cell.textContent.trim();
-        const crew = row.cells[0].textContent.trim();
-
-        if (savedRow === rowIdx && savedCol === colIdx && activeLinkId === linkId) {
-          showConfirmModal(`Clear duty for ${crew}?`).then(({ confirmed }) => {
-            if (confirmed) {
-              clearHighlights();
-              clearSavedDuty();
-            }
-          });
-        } else {
-          showConfirmModal(`Confirm duty for ${crew} as "${duty}"?`).then(({ confirmed, lp, alp }) => {
-            if (confirmed) {
-              localStorage.setItem("lpName", lp);
-              localStorage.setItem("alpName", alp);
-              savedRow = rowIdx;
-              savedCol = colIdx;
-              highlight(rowIdx, colIdx);
-            }
-          });
-        }
+          if (savedRow === rowIdx && savedCol === colIdx) {
+            clearHighlights();
+            localStorage.removeItem("dutyRow");
+            localStorage.removeItem("dutyCol");
+            localStorage.removeItem("lastDutyDate");
+            savedRow = savedCol = undefined;
+          } else {
+            savedRow = rowIdx;
+            savedCol = colIdx;
+            highlight(rowIdx, colIdx);
+          }
+        });
       });
     });
+
+    // Run on page load
+    autoAdvance();
   });
-
-  autoAdvance();
-
-  function showConfirmModal(message) {
-    return new Promise((resolve) => {
-      const modal = document.getElementById("confirmModal");
-      const msgEl = document.getElementById("modalMessage");
-      const lpInput = document.getElementById("lpName");
-      const alpInput = document.getElementById("alpName");
-      const confirmBtn = document.getElementById("confirmYes");
-      const cancelBtn = document.getElementById("confirmNo");
-
-      msgEl.textContent = message;
-      lpInput.value = localStorage.getItem("lpName") || "";
-      alpInput.value = localStorage.getItem("alpName") || "";
-
-      modal.classList.remove("hidden");
-
-      function cleanup() {
-        modal.classList.add("hidden");
-        confirmBtn.removeEventListener("click", onConfirm);
-        cancelBtn.removeEventListener("click", onCancel);
-      }
-
-      function onConfirm() {
-        const lp = lpInput.value.trim();
-        const alp = alpInput.value.trim();
-        cleanup();
-        resolve({ confirmed: true, lp, alp });
-      }
-
-      function onCancel() {
-        cleanup();
-        resolve({ confirmed: false });
-      }
-
-      confirmBtn.addEventListener("click", onConfirm);
-      cancelBtn.addEventListener("click", onCancel);
-    });
-  }
-});
