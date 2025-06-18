@@ -4,7 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const totalDays = 8; // Sunday to Saturday
   const linkId = document.body.dataset.linkId;
 
-  if (!table || !linkId) return;
+  if (!table || !linkId) {
+    console.warn("Table or linkId missing");
+    return;
+  }
 
   let savedRow = parseInt(localStorage.getItem("dutyRow"));
   let savedCol = parseInt(localStorage.getItem("dutyCol"));
@@ -16,12 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let isClicking = false;
 
   function clearHighlights() {
-    table.querySelectorAll("td").forEach(cell =>
-      cell.classList.remove("duty-cell", "crew-cell-highlight")
-    );
-    table.querySelectorAll("tr").forEach(row =>
-      row.classList.remove("active-row")
-    );
+    document.querySelectorAll(".duty-cell, .crew-cell-highlight, .active-row").forEach(el => {
+      el.classList.remove("duty-cell", "crew-cell-highlight", "active-row");
+    });
   }
 
   function clearSavedDuty() {
@@ -34,9 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function scrollToRow(rowIdx) {
     const row = rows[rowIdx];
-    if (row) {
-      row.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+    if (row) row.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
   function isValidCell(cell, colIdx) {
@@ -45,13 +43,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function highlight(rowIdx, colIdx) {
-    if (rowIdx >= rows.length || colIdx >= totalDays) return;
-
     const row = rows[rowIdx];
+    if (!row || colIdx >= totalDays) return;
+
     const cell = row.cells[colIdx];
     const crewCell = row.cells[0];
 
-    if (!isValidCell(cell, colIdx)) return;
+    if (!isValidCell(cell, colIdx)) {
+      console.warn("Invalid cell for highlight");
+      return;
+    }
 
     clearHighlights();
     cell.classList.add("duty-cell");
@@ -63,14 +64,19 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("lastDutyDate", todayDateStr);
     localStorage.setItem("activeLinkId", linkId);
 
+    console.log("Highlighted:", rowIdx, colIdx);
     scrollToRow(rowIdx);
   }
 
   function autoAdvance() {
-    if (isNaN(savedRow) || isNaN(savedCol)) return;
+    console.log("Running autoAdvance()");
+    if (isNaN(savedRow) || isNaN(savedCol)) {
+      console.warn("No saved row/col");
+      return;
+    }
 
     if (activeLinkId !== linkId) {
-      clearHighlights();
+      console.log("Different linkId, skipping");
       return;
     }
 
@@ -78,18 +84,15 @@ document.addEventListener("DOMContentLoaded", () => {
       let nextRow = savedRow;
       let nextCol = savedCol;
 
-      const maxAttempts = rows.length * (totalDays - 1);
-      for (let i = 0; i < maxAttempts; i++) {
+      for (let i = 0; i < rows.length * (totalDays - 1); i++) {
         nextCol++;
         if (nextCol >= totalDays) {
-          nextCol = 1; // skip 0 (crew name column)
+          nextCol = 1;
           nextRow = (nextRow + 1) % rows.length;
         }
 
         const nextCell = rows[nextRow]?.cells[nextCol];
         if (isValidCell(nextCell, nextCol)) {
-          savedRow = nextRow;
-          savedCol = nextCol;
           highlight(nextRow, nextCol);
           return;
         }
