@@ -11,10 +11,10 @@
     border: 2px solid #f59e0b;
   }
  .active-row {
-  background-color: #dcfce7 !important; /* Light green */
+  background-color: #dbeafe !important; /* Light green */
 }
   .crew-cell-highlight {
-    background-color: #e0f2fe !important; /* Same blue as row */
+    background-color: #dbeafe !important; /* Same blue as row */
   }
 </style>
      <script>
@@ -57,16 +57,16 @@
 
 
 
-    <thead class="bg-blue-200">
+   <thead class="bg-blue-600">
       <tr>
-        <th class="border px-3 py-2 sticky top-0 left-0 z-40 bg-blue-200">Crew</th>
-        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-200">Sunday</th>
-        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-200">Monday</th>
-        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-200">Tuesday</th>
-        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-200">Wednesday</th>
-        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-200">Thursday</th>
-        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-200">Friday</th>
-        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-200">Saturday</th>
+        <th class="border px-3 py-2 sticky top-0 left-0 z-40 bg-blue-600 text-white text-center">Crew</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-600 text-white text-center">Sunday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-600 text-white text-center">Monday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-600 text-white text-center">Tuesday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-600 text-white text-center">Wednesday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-600 text-white text-center">Thursday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-600 text-white text-center">Friday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-blue-600 text-white text-center">Saturday</th>
       </tr>
     </thead>
 
@@ -77,9 +77,9 @@
 
 <td class="sticky left-0 z-30 bg-white border-2 px-3 py-2">
 <div 
-    class="w-8 h-8 rounded-full bg-blue-200 text-blue-800 shadow-md
-           flex items-center justify-center font-bold mx-auto shadow-sm 
-           transition duration-300 cursor-pointer hover:bg-blue-300"
+    class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold 
+       flex items-center justify-center mx-auto shadow-md 
+       transition duration-300 ease-in-out"
     onclick="highlightCircle(this)">
     1
 </div>
@@ -135,7 +135,7 @@
 
 <!-- Row 1 wed-->
 
- <td class="border px-3 py-2 bg-gray-100 text-gray-500 font-semibold">Rest</td>
+ <td class="border px-3 py-2 text-gray-500 font-semibold">Rest</td>
 
 <!-- Row 1 thu-->
 
@@ -191,9 +191,9 @@
 
 <td class="sticky left-0 z-30 bg-white border-2 px-3 py-2">
 <div 
-    class="w-8 h-8 rounded-full bg-blue-200 text-blue-800 shadow-md
-           flex items-center justify-center font-bold mx-auto shadow-sm 
-           transition duration-300 cursor-pointer hover:bg-blue-300"
+   class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold 
+       flex items-center justify-center mx-auto shadow-md 
+       transition duration-300 ease-in-out"
     onclick="highlightCircle(this)">
     2
 </div>
@@ -280,7 +280,7 @@
 
 <!-- Row 2 sat-->
          
-<td class="border px-3 py-2 bg-gray-100 text-gray-500 font-semibold">Rest</td>
+<td class="border px-3 py-2 text-gray-500 font-semibold">Rest</td>
 
 <!-- Row 3 -->  
           
@@ -288,9 +288,9 @@
 
 <td class="sticky left-0 z-30 bg-white border-2 px-3 py-2">
 <div 
-    class="w-8 h-8 rounded-full bg-blue-200 text-blue-800 shadow-md
-           flex items-center justify-center font-bold mx-auto shadow-sm 
-           transition duration-300 cursor-pointer hover:bg-blue-300"
+   class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold 
+       flex items-center justify-center mx-auto shadow-md 
+       transition duration-300 ease-in-out"
     onclick="highlightCircle(this)">
     3
 </div>
@@ -422,9 +422,9 @@
 
 <td class="sticky left-0 z-30 bg-white border-2 px-3 py-2">
 <div 
-    class="w-8 h-8 rounded-full bg-blue-200 text-blue-800 shadow-md
-           flex items-center justify-center font-bold mx-auto shadow-sm 
-           transition duration-300 cursor-pointer hover:bg-blue-300"
+   class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold 
+       flex items-center justify-center mx-auto shadow-md 
+       transition duration-300 ease-in-out"
     onclick="highlightCircle(this)">
     4
 </div>
@@ -436,7 +436,7 @@
 
 <!-- Row 4 mon-->
 
-<td class="border px-3 py-2 bg-gray-100 text-gray-500 font-semibold">Rest</td>
+<td class="border px-3 py-2 text-gray-500 font-semibold">Rest</td>
 
 <!-- Row 4 tue-->
 
@@ -489,7 +489,7 @@
 
 <!-- Row 4 fri-->
 
-   <td class="border px-3 py-2 bg-gray-100 text-gray-500 font-semibold">Rest</td>
+   <td class="border px-3 py-2 text-gray-500 font-semibold">Rest</td>
             
 <!-- Row 4 sat-->
 
@@ -519,9 +519,9 @@
 
 <td class="sticky left-0 z-30 bg-white border-2 px-3 py-2">
 <div 
-    class="w-8 h-8 rounded-full bg-blue-200 text-blue-800 shadow-md
-           flex items-center justify-center font-bold mx-auto shadow-sm 
-           transition duration-300 cursor-pointer hover:bg-blue-300"
+    class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold 
+       flex items-center justify-center mx-auto shadow-md 
+       transition duration-300 ease-in-out"
     onclick="highlightCircle(this)">
     5
 </div>
@@ -607,7 +607,7 @@
 
 <!-- Row 5 sat-->
          
- <td class="border px-3 py-2 bg-gray-100 text-gray-500 font-semibold">Rest</td> 
+ <td class="border px-3 py-2 text-gray-500 font-semibold">Rest</td> 
 
 <!-- Row 6 --> 
 
@@ -615,9 +615,9 @@
 
 <td class="sticky left-0 z-30 bg-white border-2 px-3 py-2">
 <div 
-    class="w-8 h-8 rounded-full bg-blue-200 text-blue-800 shadow-md
-           flex items-center justify-center font-bold mx-auto shadow-sm 
-           transition duration-300 cursor-pointer hover:bg-blue-300"
+    class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold 
+       flex items-center justify-center mx-auto shadow-md 
+       transition duration-300 ease-in-out"
     onclick="highlightCircle(this)">
     6
 </div>
@@ -700,7 +700,7 @@
 
 <!-- Row 6 fri-->
          
-<td class="border px-3 py-2 bg-gray-100 text-gray-500 font-semibold">Rest</td>
+<td class="border px-3 py-2 text-gray-500 font-semibold">Rest</td>
 
 <!-- Row 6 sat-->
 
@@ -730,9 +730,9 @@
 
 <td class="sticky left-0 z-30 bg-white border-2 px-3 py-2">
 <div 
-    class="w-8 h-8 rounded-full bg-blue-200 text-blue-800 shadow-md
-           flex items-center justify-center font-bold mx-auto shadow-sm 
-           transition duration-300 cursor-pointer hover:bg-blue-300"
+   class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold 
+       flex items-center justify-center mx-auto shadow-md 
+       transition duration-300 ease-in-out"
     onclick="highlightCircle(this)">
     7
 </div>
@@ -793,7 +793,7 @@
 
 <!-- Row 7 thu-->
 
-<td class="border px-3 py-2 bg-gray-100 text-gray-500 font-semibold">Rest</td>
+<td class="border px-3 py-2 text-gray-500 font-semibold">Rest</td>
 
 <!-- Row 7 fri-->
 
