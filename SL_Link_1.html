@@ -11,12 +11,12 @@
     border: 2px solid #f59e0b;
   }
     .active-row {
-  background-color: #dcfce7 !important; /* Light green */
+  background-color: #e9d5ff !important; /* Light green */
 }
 
  
   .crew-cell-highlight {
-    background-color: #e0f2fe !important; /* Same blue as row */
+    background-color: #e9d5ff !important; /* Same blue as row */
   }
 </style>
      <script>
@@ -60,16 +60,16 @@
 
 
 
-    <thead class="bg-green-200">
+    <thead class="bg-purple-200">
       <tr>
-        <th class="border px-3 py-2 sticky top-0 left-0 z-40 bg-purple-200">Crew</th>
-        <th class="border px-3 py-2 sticky top-0 z-20 bg-purple-200">Sunday</th>
-        <th class="border px-3 py-2 sticky top-0 z-20 bg-purple-200">Monday</th>
-        <th class="border px-3 py-2 sticky top-0 z-20 bg-purple-200">Tuesday</th>
-        <th class="border px-3 py-2 sticky top-0 z-20 bg-purple-200">Wednesday</th>
-        <th class="border px-3 py-2 sticky top-0 z-20 bg-purple-200">Thursday</th>
-        <th class="border px-3 py-2 sticky top-0 z-20 bg-purple-200">Friday</th>
-        <th class="border px-3 py-2 sticky top-0 z-20 bg-purple-200">Saturday</th>
+        <th class="border px-3 py-2 sticky top-0 left-0 z-40 bg-purple-600 text-white text-center">Crew</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-purple-600 text-white text-center">Sunday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-purple-600 text-white text-center">Monday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-purple-600 text-white text-center">Tuesday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-purple-600 text-white text-center">Wednesday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-purple-600 text-white text-center">Thursday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-purple-600 text-white text-center">Friday</th>
+        <th class="border px-3 py-2 sticky top-0 z-20 bg-purple-600 text-white text-center">Saturday</th>
       </tr>
     </thead>
 
@@ -80,9 +80,9 @@
 
 <td class="sticky left-0 z-30 bg-white border-2 px-3 py-2">
 <div 
-    class="w-8 h-8 rounded-full bg-purple-200 text-purple-800 shadow-md
-           flex items-center justify-center font-bold mx-auto shadow-sm 
-           transition duration-300 cursor-pointer hover:bg-purple-300"
+    class="w-9 h-9 rounded-full bg-purple-600 text-white font-bold 
+       flex items-center justify-center mx-auto shadow-md 
+       transition duration-300 ease-in-out"
     onclick="highlightCircle(this)">
     1
 </div>
@@ -243,9 +243,9 @@
 
 <td class="sticky left-0 z-30 bg-white border-2 px-3 py-2">
 <div 
-    class="w-8 h-8 rounded-full bg-purple-200 text-purple-800 shadow-md
-           flex items-center justify-center font-bold mx-auto shadow-sm 
-           transition duration-300 cursor-pointer hover:bg-purple-300"
+    class="w-9 h-9 rounded-full bg-purple-600 text-white font-bold 
+       flex items-center justify-center mx-auto shadow-md 
+       transition duration-300 ease-in-out"
     onclick="highlightCircle(this)">
     2
 </div>
@@ -253,7 +253,7 @@
 
 <!-- Row 2 sun -->
 
-<td class="border px-3 py-2 bg-gray-100 text-gray-500 font-semibold">Rest</td>
+<td class="border px-3 py-2 text-gray-500 font-semibold">Rest</td>
             
 <!-- Row 2 Mon-->
 
@@ -281,7 +281,7 @@
 
 <!-- Row 2 tue-->
 
-<td class="border px-3 py-2 bg-gray-100 text-gray-500 font-semibold">Rest</td>
+<td class="border px-3 py-2 text-gray-500 font-semibold">Rest</td>
    
 <!-- Row 2 wed-->
 
